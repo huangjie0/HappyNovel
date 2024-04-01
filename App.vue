@@ -17,4 +17,6 @@
 	@import url("common/css/free.css");
 	/* 矢量图标库 */
 	@import url("common/css/iconfont.css");
+	/* 动画库 */
+	@import url("/common/css/animate.css");
 </style>
