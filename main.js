@@ -1,4 +1,5 @@
 import App from './App'
+import Icon from '@/components/Icon.vue'
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -8,6 +9,7 @@ App.mpType = 'app'
 const app = new Vue({
   ...App
 })
+Vue.component('Icon',Icon)
 app.$mount()
 // #endif
 
