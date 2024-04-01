@@ -1,8 +1,6 @@
 <template>
 	<view class="content">
-		<view class="bg-danger w-100">
-			fdsfdfsdcsds
-		</view>
+		<text class="iconfont icon-shoucang font-md"></text>
 	</view>
 </template>
 
