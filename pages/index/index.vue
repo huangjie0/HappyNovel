@@ -1,6 +1,8 @@
 <template>
 	<view class="content">
-		fdsfdfsdcsds
+		<view class="bg-danger w-100">
+			fdsfdfsdcsds
+		</view>
 	</view>
 </template>
 
