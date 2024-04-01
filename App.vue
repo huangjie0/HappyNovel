@@ -13,5 +13,8 @@
 </script>
 
 <style>
+	/* 自定义全局样式 */
 	@import url("common/css/free.css");
+	/* 矢量图标库 */
+	@import url("common/css/iconfont.css");
 </style>
