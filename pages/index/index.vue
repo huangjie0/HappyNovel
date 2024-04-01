@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<Icon icon-id="icon-bofangsanjiaoxing"></Icon>
-		
 	</view>
 </template>
 
