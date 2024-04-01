@@ -1,15 +1,19 @@
 <template>
-	<view class="content">
-		<text class="iconfont icon-shoucang font-md" style="font-size: 200rpx"></text>
+	<view>
+		<Icon icon-id="icon-bofangsanjiaoxing"></Icon>
 	</view>
 </template>
 
 <script>
+	import Icon from '@/components/Icon.vue';
 	export default {
 		data() {
 			return {
 				
 			}
+		},
+		components:{
+			Icon
 		},
 		onLoad() {
 
