@@ -6,7 +6,6 @@
 		<Recommond :rebooks="rebooks"></Recommond>
 		<block v-for="(item,index) in bookResources" :key="index">
 			
-			
 		</block>
 	</view> 
 </template>
