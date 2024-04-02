@@ -2,7 +2,7 @@
 	<view class="m-2">
 		<swiper indicator-dots autoplay circular class="swiper-conter" indicator-active-color="#ffffff" @change="getCurrentImgIndex">
 			<swiper-item v-for="(item,index) in imageList" :key="index">
-				<image :src="item.src" mode="aspectFill" class="w-100 animated " 
+				<image :src="item.src" mode="aspectFill" class="w-100 animated" 
 				:class="currentImIndex == index ? 'my-animate' : '' "></image>
 			</swiper-item>
 		</swiper>
@@ -24,9 +24,7 @@
 		},
 		methods:{
 			getCurrentImgIndex(e){
-				console.log(e);
 				this.currentImIndex = e.detail.current
-				console.log(this.currentImIndex);
 			}
 		}
 	}
