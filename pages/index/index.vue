@@ -4,12 +4,8 @@
 		<RotationChart :image-list="imgArr"></RotationChart>
 		<FunctionSort :function-sort="functionSort"></FunctionSort>
 		<ListHeader>
-			<template #title>
-				猜你喜欢
-			</template>
-			<template #tips>
-				更多推荐
-			</template>
+			<template #title>猜你喜欢</template>
+			<template #tips>更多推荐</template>
 		</ListHeader>
 	</view>
 </template>
