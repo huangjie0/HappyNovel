@@ -3,7 +3,7 @@
 		<swiper indicator-dots autoplay circular class="swiper-conter" indicator-active-color="#ffffff" @change="getCurrentImgIndex">
 			<swiper-item v-for="(item,index) in imageList" :key="index">
 				<image :src="item.src" mode="aspectFill" class="w-100 animated " 
-				:class="currentImIndex == index ? 'slideInDown' : '' "></image>
+				:class="currentImIndex == index ? 'my-animate' : '' "></image>
 			</swiper-item>
 		</swiper>
 	</view>
