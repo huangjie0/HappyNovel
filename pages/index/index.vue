@@ -5,7 +5,16 @@
 		<FunctionSort :function-sort="functionSort"></FunctionSort>
 		<Recommond :rebooks="rebooks"></Recommond>
 		<block v-for="(item,index) in bookResources" :key="index">
-			
+			<ListHeader>
+				<template #title>
+					{{ item.headerTitle }}
+				</template>
+			</ListHeader>
+			<block v-for="(mitem,mindex) in item.books" :key="mindex">
+				<view class="books border-bottom">
+					<image :src="mitem.imgurl" mode="aspectFill" class="books-image rounded"></image>
+				</view>
+			</block>
 		</block>
 	</view> 
 </template>
@@ -15,21 +24,22 @@
 	import RotationChart from "@/components/RotationChart.vue"
 	import FunctionSort from "@/components/FunctionSort.vue"
 	import Recommond from "@/components/compound/Recommond.vue"
+	import ListHeader from "@/components/ListHeader.vue"
 	export default {
 		data() {
 			return {
 				imgArr:[
 					{
-						src:"/static/swiperImages/image.jpg"
+						src:"/static/swiperImages/swipertab1.png"
 					},
 					{
-						src:"/static/swiperImages/image1.jpg"
+						src:"/static/swiperImages/swipertab2.png"
 					},
 					{
-						src:"/static/swiperImages/image3.jpg"
+						src:"/static/swiperImages/swipertab3.png"
 					},
 					{
-						src:"/static/swiperImages/image4.jpg"
+						src:"/static/swiperImages/swipertab4.png"
 					},
 				],
 				 functionSort:[
@@ -60,23 +70,32 @@
 					  {
 						 id:1,
 						 name:'西游记',
-						 src:'/static/guessLike/333.jpg'
+						 src:'/static/Rebook/Rebook1.jpg'
 					  },
 					  {
 						 id:2,
 						 name:'贺兰山志',
-						 src:'/static/guessLike/444.jpg'
+						 src:'/static/Rebook/Rebook2.jpg'
 					  },
 					  {
 						 id:3,
 						 name:'水浒传',
-						 src:'/static/guessLike/111.jpg'
-					  },
-					  {
-						 id:4,
-						 name:'文城',
-						 src:'/static/guessLike/222.jpg'
+						 src:'/static/Rebook/Rebook3.jpg'
 					  }
+				 ],
+				 bookResources:[
+					 {
+						headerTitle:"人文"
+					 },
+					 {
+						headerTitle:"历史"
+					 },
+					 {
+						headerTitle:"音乐"
+					 },
+					 {
+						headerTitle:"艺术"
+					 }
 				 ]
 			}
 		},
@@ -87,7 +106,8 @@
 			SearchBox,
 			RotationChart,
 			FunctionSort,
-			Recommond
+			Recommond,
+			ListHeader
 		},
 		methods: {
 
@@ -96,5 +116,12 @@
 </script>
 
 <style lang="scss" scoped>
-	
+	.books{
+		height: 320rpx;
+		&-image{
+			width: 300rpx;
+			height: 250rpx;
+		}
+		
+	}
 </style>
