@@ -11,7 +11,6 @@
 				</template>
 			</ListHeader>
 			<block v-for="(mitem,mindex) in item.books" :key="mindex">
-				
 			</block>
 		</block>
 	</view>
