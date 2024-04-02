@@ -7,7 +7,7 @@
 		<view class="flex align-center">
 			<block v-for="(item,index) in rebooks" :key="index" class="rebook-image">
 				<view class="flex-1 rebook-image flex-column flex align-center position-relative">
-					<image :src="item.src" class="rebook-image"></image>
+					<image :src="item.src" class="rebook-image" mode="aspectFill"></image>
 					<text class="font my-1 text-light-black">{{ item.name }}</text>
 					<icon icon-id="icon-erji" icon-color="text-light-white" icon-size="30" class="position-absolute er-ji"></icon>
 				</view>
@@ -33,10 +33,10 @@
 
 <style lang="scss" scoped>
 	.rebook-image{
-		width: 140rpx;
-		height: 240rpx;
+		width: 200rpx;
+		height: 300rpx;
 		.er-ji{
-			left: 40rpx;
+			left: 50rpx;
 			top: 10rpx;
 		}
 	}
