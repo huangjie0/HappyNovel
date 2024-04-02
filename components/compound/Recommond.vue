@@ -33,8 +33,8 @@
 
 <style lang="scss" scoped>
 	.rebook-image{
-		width: 130rpx;
-		height: 220rpx;
+		width: 140rpx;
+		height: 240rpx;
 		.er-ji{
 			left: 40rpx;
 			top: 10rpx;
