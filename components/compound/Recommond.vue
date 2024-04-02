@@ -19,32 +19,6 @@
 <script>
 	import ListHeader from "@/components/ListHeader.vue"
 	export default{
-		data(){
-			return{
-				// rebooks:[
-				//  {
-				// 	 id:1,
-				// 	 name:'西游记',
-				// 	 src:'/static/guessLike/333.jpg'
-				//  },
-				//  {
-				// 	 id:2,
-				// 	 name:'贺兰山志',
-				// 	 src:'/static/guessLike/444.jpg'
-				//  },
-				//  {
-				// 	 id:3,
-				// 	 name:'水浒传',
-				// 	 src:'/static/guessLike/111.jpg'
-				//  },
-				//  {
-				// 	 id:4,
-				// 	 name:'文城',
-				// 	 src:'/static/guessLike/222.jpg'
-				//  }
-				// ]
-			}
-		},
 		components:{
 			ListHeader
 		},
