@@ -4,7 +4,10 @@
 		<RotationChart :image-list="imgArr"></RotationChart>
 		<FunctionSort :function-sort="functionSort"></FunctionSort>
 		<Recommond :rebooks="rebooks"></Recommond>
-		<block v-for="(item,index) in bookResources" :key="index"></block>
+		<block v-for="(item,index) in bookResources" :key="index">
+			
+			
+		</block>
 	</view> 
 </template>
 
