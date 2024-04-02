@@ -69,7 +69,7 @@
 					},
 					{
 						id: 2,
-						name: '贺兰山志',
+						name: '三国演义',
 						src: '/static/Rebook/Rebook2.jpg'
 					},
 					{
