@@ -1,8 +1,9 @@
 <template>
 	<view class="m-2">
-		<swiper indicator-dots autoplay circular class="swiper-conter" indicator-active-color="#ffffff">
+		<swiper indicator-dots autoplay circular class="swiper-conter" indicator-active-color="#ffffff" @change="getCurrentImgIndex">
 			<swiper-item v-for="(item,index) in imageList" :key="index">
-				<image :src="item.src" mode="aspectFill" class="w-100"></image>
+				<image :src="item.src" mode="aspectFill" class="w-100 animated " 
+				:class="currentImIndex == index ? 'slideInDown' : '' "></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -14,6 +15,18 @@
 			imageList:{
 				type:Array,
 				default:()=>[]
+			}
+		},
+		data(){
+			return{
+				currentImIndex:0
+			}
+		},
+		methods:{
+			getCurrentImgIndex(e){
+				console.log(e);
+				this.currentImIndex = e.detail.current
+				console.log(this.currentImIndex);
 			}
 		}
 	}
