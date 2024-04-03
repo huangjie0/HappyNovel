@@ -25,9 +25,9 @@
 		},
 		methods:{
 			switchToPage(index){
-				// uni.navigateTo({
-				// 	url:'../pages/ReadList/ReadList'
-				// })
+				uni.navigateTo({
+					url:pageList[index]
+				})
 			}
 		}
 	}
