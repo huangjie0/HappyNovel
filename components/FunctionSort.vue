@@ -10,6 +10,12 @@
 </template>
 
 <script>
+	let pageList = {
+		[0]:"/pages/ReadList/ReadList",
+		[1]:"/pages/ListenNovel/ListenNovel",
+		[2]:"/pages/ListenMusic/ListenMusic",
+		[3]:"/pages/ListenKnowledge/ListenKnowledge"
+	}
 	export default{
 		props:{
 			functionSort:{
@@ -19,7 +25,9 @@
 		},
 		methods:{
 			switchToPage(index){
-				console.log(index);
+				// uni.navigateTo({
+				// 	url:'../pages/ReadList/ReadList'
+				// })
 			}
 		}
 	}
