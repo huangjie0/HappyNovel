@@ -29,6 +29,38 @@
 				"navigationBarTitleText" : "分类",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/ReadList/ReadList",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/ListenNovel/ListenNovel",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/ListenMusic/ListenMusic",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/ListenKnowledge/ListenKnowledge",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
