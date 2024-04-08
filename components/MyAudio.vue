@@ -20,12 +20,22 @@
 				<icon icon-id="icon-shangyishou" icon-size="75"></icon>
 				<icon icon-id="icon-ziyuan" icon-size="75" class="m-2"></icon>
 				<icon icon-id="icon-xiayishou" icon-size="75"></icon>
+				{{ num }}
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
+	export default {
+		computed:{
+			...mapState({
+				num:({audio}) => audio.num
+			})
+		}
+	}
+	
 </script>
 
 <style scoped lang="scss">
