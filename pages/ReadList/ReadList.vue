@@ -1,10 +1,11 @@
 <template>
 	<view>
-		看榜单
+		<PageTitle></PageTitle>
 	</view>
 </template>
 
 <script>
+	import PageTitle from '@/components/PageTitle.vue'
 	export default {
 		data() {
 			return {
@@ -13,6 +14,9 @@
 		},
 		methods: {
 			
+		},
+		components:{
+			PageTitle
 		}
 	}
 </script>
