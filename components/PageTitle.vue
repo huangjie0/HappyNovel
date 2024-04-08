@@ -1,11 +1,18 @@
 <template>
 	<div>
-		<Icon></Icon>
-		<slot></slot>
+		<Icon icon-id="icon-jiantou-copy"></Icon>
+		<slot>榜单</slot>
 	</div>
 </template>
 
 <script>
+	export default {
+		data(){
+			return {
+				
+			}
+		}
+	}
 	
 </script>
 
