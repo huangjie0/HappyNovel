@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<Icon icon-id="icon-jiantou-copy"></Icon>
-		<slot>榜单</slot>
-	</div>
+	<view class="flex align-center">
+		<Icon icon-id="icon-jiantou-copy" class="m-2"></Icon>
+		<view class="font-lg"><slot>榜单</slot></view>
+	</view>
 </template>
 
 <script>
