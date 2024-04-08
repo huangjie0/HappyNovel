@@ -97,8 +97,9 @@
 					]
 				}
 				setTimeout(()=>{
-					if(bookMoreList.length){
+					if(bookMoreList.books.length){
 						this.loadBookList = [...bookMoreList.books]
+						this.loadMoreStatus = 'more'
 					}
 				},2000)	
 			}
