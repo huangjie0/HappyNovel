@@ -18,7 +18,7 @@
 			</view>
 			<view class="">
 				<icon icon-id="icon-shangyishou" icon-size="75"></icon>
-				<icon icon-id="icon-ziyuan" icon-size="75" class="m-2"></icon>
+				<icon icon-id="icon-ziyuan" icon-size="75" class="m-2" @tap="playOrpause"></icon>
 				<icon icon-id="icon-xiayishou" icon-size="75"></icon>
 				{{ num }}
 			</view>
@@ -33,6 +33,16 @@
 			...mapState({
 				num:({audio}) => audio.num
 			})
+		},
+		mounted(){
+			this.init()
+		},
+		destroyed(){
+			this.destroy()
+		},
+		methods:{
+			...mapActions(['init','playOrpause']),
+			...mapMutations(['destroy'])
 		}
 	}
 	
