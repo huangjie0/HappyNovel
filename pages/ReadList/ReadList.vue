@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<PageTitle></PageTitle>
+		<PageTitle>榜单</PageTitle>
 	</view>
 </template>
 
