@@ -12,6 +12,7 @@
 			</ListHeader>
 			<BookList :book-list="item.books"></BookList>
 		</block>
+		<MyAudio></MyAudio>
 	</view>
 </template>
 
@@ -22,6 +23,7 @@
 	import Recommond from "@/components/compound/Recommond.vue"
 	import ListHeader from "@/components/ListHeader.vue"
 	import BookList from "@/components/BookList.vue"
+	import MyAudio from "@/components/MyAudio.vue"
 	export default {
 		data() {
 			return {
@@ -177,7 +179,8 @@
 			FunctionSort,
 			Recommond,
 			ListHeader,
-			BookList
+			BookList,
+			MyAudio
 		},
 		methods: {
 
