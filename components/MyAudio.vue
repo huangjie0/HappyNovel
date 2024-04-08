@@ -1,6 +1,6 @@
 <template>
 	<view class="fixed-bottom audi-container mx-2 mb-1 rounded">
-		1111
+		进度部分
 	</view>
 </template>
 
