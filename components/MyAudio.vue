@@ -11,6 +11,17 @@
 			<!-- 当前播放时刻 -->
 			<view>00:00</view>
 		</view>
+		<view class="audi-bottom flex align-center justify-between mx-2">
+			<view class="font singer">
+				<view>歌手-The one</view>
+				<view>歌曲-暗香</view>
+			</view>
+			<view class="">
+				<icon icon-id="icon-shangyishou" icon-size="75"></icon>
+				<icon icon-id="icon-ziyuan" icon-size="75" class="m-2"></icon>
+				<icon icon-id="icon-xiayishou" icon-size="75"></icon>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -24,6 +35,14 @@
 		opacity: 0.9;
 		.audi-slider{
 			color: #7a8388;
+			height: 65rpx;
+		}
+		.audi-bottom{
+			height: 95rpx;
+			.singer{
+				color: #424651;
+			}
+			
 		}
 		.slider-container{
 			width: 500rpx;
