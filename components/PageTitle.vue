@@ -1,7 +1,7 @@
 <template>
 	<view class="flex align-center">
-		<Icon icon-id="icon-jiantou-copy" class="m-2"></Icon>
-		<view class="font-lg"><slot>榜单</slot></view>
+		<Icon icon-id="icon-jiantou-copy" class="m-2" @tap="quit"></Icon>
+		<view class="font-lg"><slot></slot></view>
 	</view>
 </template>
 
@@ -10,6 +10,13 @@
 		data(){
 			return {
 				
+			}
+		},
+		methods:{
+			quit(){
+				uni.navigateBack({
+					delta:1
+				})
 			}
 		}
 	}
