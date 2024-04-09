@@ -3,7 +3,8 @@ import musicResourecs from './musicResourecs.js';
 let audio;
 export default {
 	state:{
-		playStatus:false
+		playStatus:false,
+		currentPlayIndex:0
 	},
 	getters:{
 		
@@ -41,13 +42,21 @@ export default {
 			audio.offError()
 		},
 		//开始播放
-		audioPlay(){
-			audio.src = musicResourecs.musicResourecs[1].src;
+		audioPlay(state){
+			let index = state.currentPlayIndex;
+			audio.src = musicResourecs.musicResourecs[index].src;
 			audio.play()
 		},
 		// 暂停方法
 		audioPause(){
 			audio.pause()
+		},
+		//停止播放
+		audioStop(){
+			audio.stop()
+		},
+		changePlayIndex(state,index){
+			state.currentPlayIndex = index 
 		}
 	},
 	actions:{
