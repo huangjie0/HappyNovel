@@ -3,7 +3,6 @@ import musicResourecs from './musicResourecs.js';
 let audio;
 export default {
 	state:{
-		num:1,
 		playStatus:false
 	},
 	getters:{
@@ -21,13 +20,12 @@ export default {
 				console.log("暂停播放");
 			})
 			audio.onStop(()=>{
+				state.playStatus = false
 				console.log("停止播放");
 			})
 			audio.onEnded(()=>{
+				state.playStatus = false
 				console.log("音频自然播放结束");
-			})
-			audio.onTimeUpdate(()=>{
-				console.log("音频播放进度更新");
 			})
 			audio.onError(()=>{
 				console.log("音频播放错误");
