@@ -1,3 +1,12 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "search-box": "/components/SearchBox",
+    "rotation-chart": "/components/RotationChart",
+    "function-sort": "/components/FunctionSort",
+    "recommond": "/components/compound/Recommond",
+    "list-header": "/components/ListHeader",
+    "book-list": "/components/BookList",
+    "my-audio": "/components/MyAudio"
+  }
 }

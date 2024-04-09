@@ -1,6 +1,13 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/collection/collection",
+    "pages/mine/mine",
+    "pages/sort/sort",
+    "pages/ReadList/ReadList",
+    "pages/ListenNovel/ListenNovel",
+    "pages/ListenMusic/ListenMusic",
+    "pages/ListenKnowledge/ListenKnowledge"
   ],
   "subPackages": [],
   "window": {
@@ -8,5 +15,39 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "tabBar": {
+    "selectedColor": "#dc4d2f",
+    "fontSize": "12px",
+    "backgroundColor": "#f4f7fc",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/indexed.png"
+      },
+      {
+        "pagePath": "pages/collection/collection",
+        "text": "收藏",
+        "iconPath": "static/tabbar/collection.png",
+        "selectedIconPath": "static/tabbar/collectioned.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/tabbar/mine.png",
+        "selectedIconPath": "static/tabbar/mined.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "static/tabbar/sort.png",
+        "selectedIconPath": "static/tabbar/sorted.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "icon": "/components/Icon"
+  }
 }
