@@ -55,6 +55,7 @@ export default {
 		audioStop(){
 			audio.stop()
 		},
+		//改变播放标识
 		changePlayIndex(state,index){
 			state.currentPlayIndex = index 
 		}
@@ -72,6 +73,24 @@ export default {
 			}else{
 				commit('audioPause')
 			}
+		},
+		//切歌
+		preOrNext({state,commit},type){
+			//先停止播放音乐
+			commit('audioStop');
+			let curIndex = state.currentPlayIndex;
+			let lastIndex = musicResourecs.lenggth - 1;
+			switch (type){
+				case 'pre':
+					curIndex == 0 ? commit('changePlayIndex',lastIndex) : commit('changePlayIndex',curIndex-1)
+					break;
+				case 'next':
+					curIndex == lastIndex ? commit('changePlayIndex',0) : commit('changePlayIndex',curIndex+1)
+					break;
+			}
+			//然后开始播放音乐
+			commit('audioPlay')
 		}
+		
 	}
 }
