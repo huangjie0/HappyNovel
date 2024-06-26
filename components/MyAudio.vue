@@ -31,7 +31,12 @@
 
 <script>
 	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
+	import tool  from '@/common/tool.js';
 	export default {
+		//局部过滤器
+		filters:{
+			...tool
+		},
 		computed:{
 			...mapState({
 				playStatus:({ audio }) => audio.playStatus,
