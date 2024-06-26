@@ -79,7 +79,7 @@ export default {
 			//先停止播放音乐
 			commit('audioStop');
 			let curIndex = state.currentPlayIndex;
-			let lastIndex = musicResourecs.lenggth - 1;
+			let lastIndex = musicResourecs.musicResourecs.length - 1;
 			switch (type){
 				case 'pre':
 					curIndex == 0 ? commit('changePlayIndex',lastIndex) : commit('changePlayIndex',curIndex-1)
