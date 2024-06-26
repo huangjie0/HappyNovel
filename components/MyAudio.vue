@@ -3,13 +3,13 @@
 		<!-- 进度部分 -->
 		<view class="flex align-center justify-center font audi-slider">
 			<!-- 总时长 -->
-			<view>00:00</view>
+			<view>{{ durationTime }}</view>
 			<!-- 进度条部分 -->
 			<view class="slider-container">
 				<slider block-size="16" active-color="#e48267" background-color="#eef2f3"/>
 			</view>
 			<!-- 当前播放时刻 -->
-			<view>00:00</view>
+			<view>{{ currentTime }}</view>
 		</view>
 		<view class="audi-bottom flex align-center justify-between mx-2">
 			<view class="font singer">
@@ -34,7 +34,9 @@
 	export default {
 		computed:{
 			...mapState({
-				playStatus:({ audio }) => audio.playStatus
+				playStatus:({ audio }) => audio.playStatus,
+				durationTime:({ audio }) => audio.durationTime,
+				currentTime:({ audio }) => audio.currentTime,
 			})
 		},
 		mounted(){
