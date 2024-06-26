@@ -91,6 +91,5 @@ export default {
 			//然后开始播放音乐
 			commit('audioPlay')
 		}
-		
 	}
 }
