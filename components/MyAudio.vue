@@ -16,10 +16,14 @@
 				<view>歌手-The one</view>
 				<view>歌曲-暗香</view>
 			</view>
-			<view>
-				<icon icon-id="icon-shangyishou" icon-size="75" @tap="preOrNext('pre')"></icon>
+			<view class="flex align-center">
+				<view class="animated" hover-class="pulse">
+					<icon icon-id="icon-shangyishou" icon-size="75" @tap="preOrNext('pre')"></icon>
+				</view>
 				<icon :icon-id="playStatus ? 'icon-bofang' : 'icon-ziyuan'" icon-size="75" class="m-2" @tap="playOrpause"></icon>
-				<icon icon-id="icon-xiayishou" icon-size="75" @tap="preOrNext('next')"></icon>
+				<view class="animated" hover-class="pulse">
+					<icon icon-id="icon-xiayishou" icon-size="75" @tap="preOrNext('next')"></icon>
+				</view>
 			</view>
 		</view>
 	</view>
