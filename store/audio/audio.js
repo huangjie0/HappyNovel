@@ -4,7 +4,9 @@ let audio;
 export default {
 	state:{
 		playStatus:false,
-		currentPlayIndex:0
+		currentPlayIndex:0,
+		durationTime:0, //音频总时长
+		currentTime:0 //当前播放时刻
 	},
 	getters:{
 		
@@ -14,6 +16,7 @@ export default {
 		addAudioEvent(state){
 			audio.onPlay(()=>{
 				state.playStatus = true
+				state.durationTime = audio.duration
 				console.log("开始播放");
 			})
 			audio.onPause(()=>{
@@ -30,6 +33,9 @@ export default {
 			})
 			audio.onError(()=>{
 				console.log("音频播放错误");
+			})
+			audio.onTimeUpdate(()=>{
+				state.currentTime = audio.currentTime 
 			})
 		},
 		//销毁
