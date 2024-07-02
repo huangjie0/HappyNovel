@@ -31,7 +31,7 @@
 
 <script>
 	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
-	import tool  from '@/common/tool.js';
+	import tool from '@/common/tool.js';
 	export default {
 		//局部过滤器
 		filters:{
