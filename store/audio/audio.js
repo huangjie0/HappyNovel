@@ -6,10 +6,10 @@ export default {
 		playStatus:false,
 		currentPlayIndex:0,
 		durationTime:0, //音频总时长
-		currentTime:0 //当前播放时刻
+		currentTime:0, //当前播放时刻
 	},
 	getters:{
-		
+	
 	},
 	mutations:{
 		//监听
