@@ -3,18 +3,18 @@
 		<!-- 进度部分 -->
 		<view class="flex align-center justify-center font audi-slider">
 			<!-- 总时长 -->
-			<view>{{ durationTime }}</view>
+			<view>{{ durationTime | formatTime}}</view>
 			<!-- 进度条部分 -->
 			<view class="slider-container">
 				<slider block-size="16" active-color="#e48267" background-color="#eef2f3"/>
 			</view>
 			<!-- 当前播放时刻 -->
-			<view>{{ currentTime }}</view>
+			<view>{{ currentTime | formatTime}}</view>
 		</view>
 		<view class="audi-bottom flex align-center justify-between mx-2">
 			<view class="font singer">
-				<view>歌手-The one</view>
-				<view>歌曲-暗香</view>
+				<view>歌手-{{ singerName }}</view>
+				<view>歌曲-{{ audioName }}</view>
 			</view>
 			<view class="flex align-center">
 				<view class="animated" hover-class="pulse">
@@ -32,6 +32,7 @@
 <script>
 	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
 	import tool from '@/common/tool.js';
+	import musicResourecs from '../store/audio/musicResourecs.js';
 	export default {
 		//局部过滤器
 		filters:{
@@ -42,7 +43,14 @@
 				playStatus:({ audio }) => audio.playStatus,
 				durationTime:({ audio }) => audio.durationTime,
 				currentTime:({ audio }) => audio.currentTime,
-			})
+				currentPlayIndex:({ audio }) => audio.currentPlayIndex
+			}),
+			audioName(){
+				return musicResourecs.musicResourecs[this.currentPlayIndex].name
+			},
+			singerName(){
+				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.name
+			}
 		},
 		mounted(){
 			this.init()
@@ -72,7 +80,6 @@
 			.singer{
 				color: #424651;
 			}
-			
 		}
 		.slider-container{
 			width: 500rpx;
