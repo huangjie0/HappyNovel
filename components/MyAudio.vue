@@ -3,7 +3,7 @@
 		<!-- 进度部分 -->
 		<view class="flex align-center justify-center font audi-slider">
 			<!-- 总时长 -->
-			<view>{{ durationTime | formatTime}}</view>
+			<view>{{ durationTime | formatTime }}</view>
 			<!-- 进度条部分 -->
 			<view class="slider-container">
 				<slider block-size="16" active-color="#e48267" background-color="#eef2f3"/>
@@ -53,7 +53,7 @@
 			}
 		},
 		mounted(){
-			this.init()
+			this.init();
 		},
 		destroyed(){
 			this.destroy()
