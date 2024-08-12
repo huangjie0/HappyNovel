@@ -8,15 +8,17 @@ export default {
 		durationTime:0, //音频总时长
 		currentTime:0, //当前播放时刻
 	},
-	getters:{
-	
-	},
 	mutations:{
 		//监听
 		addAudioEvent(state){
 			audio.onPlay(()=>{
-				state.playStatus = true
-				state.durationTime = audio.duration
+				state.playStatus = true;
+				let intervalID = setInterval(()=>{
+					if(state.durationTime !== 0){
+						clearInterval(intervalID);
+					}
+					state.durationTime = audio.duration;
+				},500);
 				console.log("开始播放");
 			})
 			audio.onPause(()=>{
@@ -70,7 +72,7 @@ export default {
 		init({commit}){
 			// 实例化api
 			if(audio) return
-			audio = uni.createInnerAudioContext()
+			audio = uni.createInnerAudioContext();
 			commit('addAudioEvent')
 		},
 		playOrpause({ state,commit }){
