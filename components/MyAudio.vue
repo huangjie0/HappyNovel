@@ -6,7 +6,8 @@
 			<view>{{ durationTime | formatTime }}</view>
 			<!-- 进度条部分 -->
 			<view class="slider-container">
-				<slider block-size="16" active-color="#e48267" background-color="#eef2f3"/>
+				<slider block-size="16" active-color="#e48267" background-color="#eef2f3" 
+				:max="durationTime" :value="currentTime" @change="sliderToPlay"/>
 			</view>
 			<!-- 当前播放时刻 -->
 			<view>{{ currentTime | formatTime}}</view>
@@ -59,7 +60,7 @@
 			this.destroy()
 		},
 		methods:{
-			...mapActions(['init','playOrpause','preOrNext']),
+			...mapActions(['init','playOrpause','preOrNext','sliderToPlay']),
 			...mapMutations(['destroy'])
 		}
 	}
