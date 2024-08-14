@@ -1,7 +1,7 @@
 <template>
-	<view class="fixed-bottom audi-container mx-2 mb-1 rounded">
+	<view class="fixed-bottom audi-container mx-2 mb-1 rounded" @tap="toDetailPage">
 		<!-- 进度部分 -->
-		<view class="flex align-center justify-center font audi-slider">
+		<view class="flex align-center justify-center font audi-slider" @tap.stop>
 			<!-- 总时长 -->
 			<view>{{ durationTime | formatTime }}</view>
 			<!-- 进度条部分 -->
@@ -17,7 +17,7 @@
 				<view>歌手-{{ singerName }}</view>
 				<view>歌曲-{{ audioName }}</view>
 			</view>
-			<view class="flex align-center">
+			<view class="flex align-center" @tap.stop>
 				<view class="animated" hover-class="pulse">
 					<icon icon-id="icon-shangyishou" icon-size="75" @tap="preOrNext('pre')"></icon>
 				</view>
@@ -61,7 +61,12 @@
 		},
 		methods:{
 			...mapActions(['init','playOrpause','preOrNext','sliderToPlay']),
-			...mapMutations(['destroy'])
+			...mapMutations(['destroy']),
+			toDetailPage(){
+				uni.navigateTo({
+					url:'/pages/musicDetail/musicDetail'
+				})
+			}
 		}
 	}
 	
