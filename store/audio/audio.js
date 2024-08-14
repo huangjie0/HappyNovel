@@ -98,6 +98,10 @@ export default {
 			}
 			//然后开始播放音乐
 			commit('audioPlay')
+		},
+		//滑块滑动事件
+		sliderToPlay({ state,commit },e){
+			console.log(e);
 		}
 	}
 }
