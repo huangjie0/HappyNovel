@@ -10,7 +10,7 @@ export default {
 	},
 	mutations:{
 		//监听
-		addAudioEvent(state){
+		addAudioEvent(state,dispatch){
 			audio.onPlay(()=>{
 				state.playStatus = true;
 				let intervalID = setInterval(()=>{
@@ -31,6 +31,7 @@ export default {
 			})
 			audio.onEnded(()=>{
 				state.playStatus = false
+				dispatch('preOrNext','next');
 				console.log("音频自然播放结束");
 			})
 			audio.onError(()=>{
@@ -66,14 +67,19 @@ export default {
 		//改变播放标识
 		changePlayIndex(state,index){
 			state.currentPlayIndex = index 
+		},
+		//跳转播放
+		audioSeek(state,pos){
+			audio.seek(pos)
+			console.log(pos);
 		}
 	},
 	actions:{
-		init({commit}){
+		init({commit,dispatch}){
 			// 实例化api
 			if(audio) return
 			audio = uni.createInnerAudioContext();
-			commit('addAudioEvent')
+			commit('addAudioEvent',dispatch)
 		},
 		playOrpause({ state,commit }){
 			if(!state.playStatus){
@@ -101,7 +107,10 @@ export default {
 		},
 		//滑块滑动事件
 		sliderToPlay({ state,commit },e){
-			console.log(e);
+			commit('audioSeek',e.detail.value)
+			if(!state.playStatus){
+				commit('audioPlay')
+			}
 		}
 	}
 }
