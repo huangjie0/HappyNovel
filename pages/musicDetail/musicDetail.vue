@@ -85,12 +85,18 @@
 				列表选择
 			</view>
 			<scroll-view scroll-y class="scroll-list">
-				<block>
-					<view></view>
+				<block v-for="(item,index) in audioList" :key="item.id">
+					<view>
+						<text>{{ item.audioName }}</text>
+						<text>{{ item.singerName }} </text>
+						<view>
+							<text>播放</text>
+							<icon iconId="icon-bofangsanjiaoxing" iconSize="40"></icon>
+						</view>
+					</view>
 				</block>
 			</scroll-view>
 		</view>
-		
 	</view>
 </template>
 
@@ -112,6 +118,7 @@
 				currentPlayIndex:({ audio }) => audio.currentPlayIndex,
 				durationTime:({ audio }) => audio.durationTime,
 				currentTime:({ audio }) => audio.currentTime,
+				audioList:({ audio }) => audio.audioList
 			}),
 			audioName(){
 				return musicResourecs.musicResourecs[this.currentPlayIndex].name
@@ -162,7 +169,6 @@
 .bottom-container-2{
 	height: 400rpx;
 	border-radius: 30rpx;
-	background-color: pink;
 }
 .search-list{
 	height: 50rpx;
