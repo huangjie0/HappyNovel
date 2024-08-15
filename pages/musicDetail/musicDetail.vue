@@ -55,7 +55,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="fixed-bottom shadow p-2 bottom-container">
+		<!-- <view class="fixed-bottom shadow p-2 bottom-container">
 			<view class="flex justify-between">
 				<view>
 					<view>
@@ -77,9 +77,19 @@
 					{{ singerIntro }}
 				</view>
 			</view>
-		</view>
+		</view> -->
 		
 		<!-- 播放列表区域 -->
+		<view class="fixed-bottom shadow p-2 bottom-container-2">
+			<view class="font-weight-bold font-md search-list">
+				列表选择
+			</view>
+			<scroll-view scroll-y class="scroll-list">
+				<block>
+					<view></view>
+				</block>
+			</scroll-view>
+		</view>
 		
 	</view>
 </template>
@@ -148,5 +158,16 @@
 .bottom-container{
 	height: 200rpx;
 	border-radius: 30rpx;
+}
+.bottom-container-2{
+	height: 400rpx;
+	border-radius: 30rpx;
+	background-color: pink;
+}
+.search-list{
+	height: 50rpx;
+}
+.scroll-list{
+	height: 350rpx;
 }
 </style>
