@@ -7,7 +7,8 @@
     "pages/ReadList/ReadList",
     "pages/ListenNovel/ListenNovel",
     "pages/ListenMusic/ListenMusic",
-    "pages/ListenKnowledge/ListenKnowledge"
+    "pages/ListenKnowledge/ListenKnowledge",
+    "pages/musicDetail/musicDetail"
   ],
   "subPackages": [],
   "window": {
