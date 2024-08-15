@@ -7,6 +7,7 @@ export default {
 		currentPlayIndex:0,
 		durationTime:0, //音频总时长
 		currentTime:0, //当前播放时刻
+		audioList:[]
 	},
 	mutations:{
 		//监听
@@ -71,7 +72,17 @@ export default {
 		//跳转播放
 		audioSeek(state,pos){
 			audio.seek(pos)
-			console.log(pos);
+		},
+		//获取音频列表
+		getAudioList(state,aduioList){
+			for (let item of aduioList) {
+				state.audioList.push({
+					id:item.id,
+					audioName:item.name,
+					singerName:item.singer.name,
+					playStatus: 0 // 0为停止 -1为暂停 1为播放 
+				})
+			}
 		}
 	},
 	actions:{
@@ -79,7 +90,9 @@ export default {
 			// 实例化api
 			if(audio) return
 			audio = uni.createInnerAudioContext();
-			commit('addAudioEvent',dispatch)
+			commit('addAudioEvent',dispatch);
+			//将数据放在List中
+			commit('getAudioList',musicResourecs.musicResourecs)
 		},
 		playOrpause({ state,commit }){
 			if(!state.playStatus){
