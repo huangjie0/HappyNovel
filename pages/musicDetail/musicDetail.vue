@@ -41,21 +41,21 @@
 				</view>
 			</view>
 			<view class="flex justify-center align-center music-button-2 font text-light-black">
-				<view class="flex flex-column align-center">
-					<icon iconId="icon-icon--" iconSize="60"></icon>
+				<view class="flex flex-column align-center" @tap="changeStatus('listStatus')">
+					<icon :iconId="listStatus ? 'icon-liebiao' : 'icon-icon--'" iconSize="60"></icon>
 					<text class="pt-1">播放列表</text>
 				</view>
-				<view class="flex flex-column align-center collect">
-					<icon iconId="icon-aixinfengxian" iconSize="60"></icon>
+				<view class="flex flex-column align-center collect" @tap="changeStatus('collectStatus')">
+					<icon :iconId="collectStatus ? 'icon-xihuan2' :'icon-aixinfengxian'" iconSize="60"></icon>
 					<text class="pt-1">收藏</text>
 				</view>
-				<view class="flex flex-column align-center">
-					<icon iconId="icon-yejianmoshi" iconSize="60"></icon>
+				<view class="flex flex-column align-center" @tap="changeStatus('nightStatus')">
+					<icon :iconId="nightStatus ? 'icon-yueliang' : 'icon-yejianmoshi'" iconSize="60"></icon>
 					<text class="pt-1">夜间模式</text>
 				</view>
 			</view>
 		</view>
-		<!-- <view class="fixed-bottom shadow p-2 bottom-container">
+		<view class="fixed-bottom shadow p-2 bottom-container animated fadeInUp" v-if="!listStatus">
 			<view class="flex justify-between">
 				<view>
 					<view>
@@ -77,20 +77,20 @@
 					{{ singerIntro }}
 				</view>
 			</view>
-		</view> -->
+		</view>
 		
 		<!-- 播放列表区域 -->
-		<view class="fixed-bottom shadow p-2 bottom-container-2">
+		<view class="fixed-bottom shadow p-2 bottom-container-2 animated fadeInUp" v-else>
 			<view class="font-weight-bold font-md search-list">
 				列表选择
 			</view>
 			<scroll-view scroll-y class="scroll-list">
 				<block v-for="(item,index) in audioList" :key="item.id">
-					<view>
-						<text>{{ item.audioName }}</text>
-						<text>{{ item.singerName }} </text>
-						<view>
-							<text>播放</text>
+					<view class="flex align-center font scroll-list-item px-2" hover-class="bg-light">
+						<text class="flex-1 text-ellipsis">{{ item.audioName }}</text>
+						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
+						<view class="flex-1 ml-3 flex align-center">
+							<text class="mr-2">播放</text>
 							<icon iconId="icon-bofangsanjiaoxing" iconSize="40"></icon>
 						</view>
 					</view>
@@ -110,8 +110,19 @@
 		filters:{
 			...tool
 		},
+		data(){
+			return{
+				listStatus:false,
+				collectStatus:false,
+				nightStatus:false
+			}
+		},
 		methods: {
-			...mapActions(['init','playOrpause','preOrNext','sliderToPlay'])
+			...mapActions(['init','playOrpause','preOrNext','sliderToPlay']),
+			//改变状态
+			changeStatus(statusTtpe){
+				this[statusTtpe] = !this[statusTtpe]
+			}
 		},
 		computed:{
 			...mapState({
@@ -175,5 +186,8 @@
 }
 .scroll-list{
 	height: 350rpx;
+	&-item{
+		height: 85rpx;
+	}
 }
 </style>
