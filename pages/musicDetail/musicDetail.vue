@@ -2,11 +2,11 @@
 	<view>
 		<PageTitle>音乐详情</PageTitle>
 		<view class="flex flex-column align-center justify-center">
-			<view class="">
+			<view>
 				<text class="font">歌曲：</text>
 				<text class="font-weight-bold">{{audioName}}</text>
 			</view>
-			<view class="">
+			<view>
 				<text class="font">歌手：</text>
 				<text class="font-weight-bold">{{singerName}}</text>
 			</view>
@@ -29,7 +29,7 @@
 		</view>
 		<!-- 按钮部分 -->
 		<view>
-			<view class="flex justify-center align-center">
+			<view class="flex justify-center align-center music-button">
 				<view class="mr-3">
 					<icon iconId="icon-shangyixiang" iconSize="85"></icon>
 				</view>
@@ -40,7 +40,7 @@
 					<icon iconId="icon-xiayixiang" iconSize="85"></icon>
 				</view>
 			</view>
-			<view class="flex justify-center align-center">
+			<view class="flex justify-center align-center music-button-2 font text-light-black">
 				<view class="flex flex-column align-center">
 					<icon iconId="icon-icon--" iconSize="60"></icon>
 					<text class="pt-1">播放列表</text>
@@ -55,6 +55,32 @@
 				</view>
 			</view>
 		</view>
+		<view class="fixed-bottom shadow p-2 bottom-container">
+			<view class="flex justify-between">
+				<view>
+					<view>
+						<text class="font">歌曲：</text>
+						<text class="font-weight-bold">{{audioName}}</text>
+					</view>
+					<view>
+						<text class="font">歌手：</text>
+						<text class="font-weight-bold">{{singerName}}</text>
+					</view>
+				</view>
+				<icon iconId="icon-jieshao" iconSize="65"></icon>
+			</view>
+			<view>
+				<view class="font-md pt-2">
+					歌手简介：
+				</view>
+				<view class="text-ellipsis w-100">
+					{{ singerIntro }}
+				</view>
+			</view>
+		</view>
+		
+		<!-- 播放列表区域 -->
+		
 	</view>
 </template>
 
@@ -67,11 +93,6 @@
 		//局部过滤器
 		filters:{
 			...tool
-		},
-		data() {
-			return {
-				
-			}
 		},
 		methods: {
 			...mapActions(['init','playOrpause','preOrNext','sliderToPlay'])
@@ -87,6 +108,9 @@
 			},
 			singerName(){
 				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.name
+			},
+			singerIntro(){
+				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.synopsis
 			}
 		},
 		components:{
@@ -114,5 +138,15 @@
 }
 .collect{
 	padding: 0 80rpx;
+}
+.music-button{
+	padding-top: 60rpx;
+}
+.music-button-2{
+	padding-top: 100rpx;
+}
+.bottom-container{
+	height: 200rpx;
+	border-radius: 30rpx;
 }
 </style>
