@@ -6,11 +6,6 @@
 <script>
 	export default {
 		name:"Icon",
-		data() {
-			return {
-				
-			};
-		},
 		props:{
 			iconId:{
 				type:String,
