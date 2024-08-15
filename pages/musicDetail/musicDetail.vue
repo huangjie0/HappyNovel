@@ -29,29 +29,29 @@
 		</view>
 		<!-- 按钮部分 -->
 		<view>
-			<view>
-				<view>
+			<view class="flex justify-center align-center">
+				<view class="mr-3">
 					<icon iconId="icon-shangyixiang" iconSize="85"></icon>
 				</view>
-				<view>
+				<view class="mx-5">
 					<icon iconId="icon-bofang1" iconSize="80"></icon>
 				</view>
-				<view>
+				<view class="ml-2">
 					<icon iconId="icon-xiayixiang" iconSize="85"></icon>
 				</view>
 			</view>
-			<view>
-				<view>
+			<view class="flex justify-center align-center">
+				<view class="flex flex-column align-center">
 					<icon iconId="icon-icon--" iconSize="60"></icon>
-					<text>播放列表</text>
+					<text class="pt-1">播放列表</text>
 				</view>
-				<view>
+				<view class="flex flex-column align-center collect">
 					<icon iconId="icon-aixinfengxian" iconSize="60"></icon>
-					<text>收藏</text>
+					<text class="pt-1">收藏</text>
 				</view>
-				<view>
+				<view class="flex flex-column align-center">
 					<icon iconId="icon-yejianmoshi" iconSize="60"></icon>
-					<text>夜间模式</text>
+					<text class="pt-1">夜间模式</text>
 				</view>
 			</view>
 		</view>
@@ -111,5 +111,8 @@
 
 .slider-container{
 	width: 500rpx;
+}
+.collect{
+	padding: 0 80rpx;
 }
 </style>
