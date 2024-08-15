@@ -1,0 +1,1 @@
+<view class="flex align-center data-v-187939be"><icon class="m-2 data-v-187939be" icon-id="icon-jiantou-copy" data-event-opts="{{[['tap',[['quit',['$event']]]]]}}" bindtap="__e"></icon><view class="font-lg data-v-187939be"><slot></slot></view></view>

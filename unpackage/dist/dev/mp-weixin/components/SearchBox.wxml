@@ -1,0 +1,1 @@
+<view class="flex align-center justify-center mx-2 border rounded bg-light search-title data-v-33090a90"><icon class="p-1 data-v-33090a90" icon-id="icon-tubiao11" icon-size="25" icon-color="text-light-muted"></icon><input class="flex-1 font-sm data-v-33090a90" type="text" placeholder="搜索你想听的节目"/></view>
