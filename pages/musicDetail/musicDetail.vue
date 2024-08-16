@@ -67,7 +67,7 @@
 						<text class="font-weight-bold">{{singerName}}</text>
 					</view>
 				</view>
-				<icon iconId="icon-jieshao" iconSize="65"></icon>
+				<icon iconId="icon-jieshao" iconSize="65" @tap="showSingerIntro"></icon>
 			</view>
 			<view>
 				<view class="font-md pt-2">
@@ -97,6 +97,12 @@
 				</block>
 			</scroll-view>
 		</view>
+		<!-- 歌手简介详情 -->
+		<uni-popup ref="popup" type="center">
+			<view class="px-2 shadow popup" :class="nightStatus ? 'night-theme' : 'bg-white'">
+				<text class="font">{{ singerIntro }}</text>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -105,6 +111,8 @@
 	import { mapState,mapMutations,mapActions } from "vuex"
 	import musicResourecs from '../../store/audio/musicResourecs.js';
 	import tool from '@/common/tool.js';
+	import uniPopup from '@/components/uni-popup/uni-popup.vue'
+	
 	export default {
 		//局部过滤器
 		filters:{
@@ -122,6 +130,10 @@
 			//改变状态
 			changeStatus(statusTtpe){
 				this[statusTtpe] = !this[statusTtpe]
+			},
+			//中间弹出框
+			showSingerIntro(){
+				this.$refs.popup.open()
 			}
 		},
 		computed:{
@@ -143,7 +155,8 @@
 			}
 		},
 		components:{
-			PageTitle
+			PageTitle,
+			uniPopup
 		}
 	}
 </script>
@@ -180,6 +193,7 @@
 .bottom-container{
 	height: 200rpx;
 	border-radius: 30rpx;
+	z-index: 0;
 }
 .bottom-container-2{
 	height: 400rpx;
@@ -194,4 +208,10 @@
 		height: 85rpx;
 	}
 }
+.popup{
+	width: 600rpx;
+	height: 850rpx;
+	border-radius: 40rpx;
+}
+
 </style>
