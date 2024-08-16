@@ -124,6 +124,22 @@ export default {
 			if(!state.playStatus){
 				commit('audioPlay')
 			}
+		},
+		//列表选择播放
+		selectPlay({state , commit},id){
+			let curIndex = musicResourecs.musicResourecs.findIndex(item => item.id === id);
+			if(state.currentPlayIndex == curIndex){
+				if(state.playStatus){
+					commit('audioPause')
+				}else{
+					commit('audioPlay')
+				}
+				return
+			}else{
+				commit('audioStop');
+			}
+			commit('changePlayIndex',curIndex);
+			commit('audioPlay')
 		}
 	}
 }
