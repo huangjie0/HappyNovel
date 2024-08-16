@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<PageTitle>音乐详情</PageTitle>
+	<view class="music-container" :class="nightStatus ? 'night-theme' : ''">
+		<PageTitle :theme="nightStatus ? 'night-theme' : 'bg-white' ">音乐详情</PageTitle> 
 		<view class="flex flex-column align-center justify-center">
 			<view>
 				<text class="font">歌曲：</text>
@@ -30,17 +30,17 @@
 		<!-- 按钮部分 -->
 		<view>
 			<view class="flex justify-center align-center music-button">
-				<view class="mr-3">
+				<view class="mr-3" @tap="preOrNext('pre')">
 					<icon iconId="icon-shangyixiang" iconSize="85"></icon>
 				</view>
-				<view class="mx-5">
-					<icon iconId="icon-bofang1" iconSize="80"></icon>
+				<view class="mx-5" @tap="playOrpause">
+					<icon iconSize="80" :icon-id="!playStatus ? 'icon-bofang1' : 'icon-zanting'"></icon>
 				</view>
-				<view class="ml-2">
+				<view class="ml-2" @tap="preOrNext('next')">
 					<icon iconId="icon-xiayixiang" iconSize="85"></icon>
 				</view>
 			</view>
-			<view class="flex justify-center align-center music-button-2 font text-light-black">
+			<view class="flex justify-center align-center music-button-2 font">
 				<view class="flex flex-column align-center" @tap="changeStatus('listStatus')">
 					<icon :iconId="listStatus ? 'icon-liebiao' : 'icon-icon--'" iconSize="60"></icon>
 					<text class="pt-1">播放列表</text>
@@ -86,7 +86,7 @@
 			</view>
 			<scroll-view scroll-y class="scroll-list">
 				<block v-for="(item,index) in audioList" :key="item.id">
-					<view class="flex align-center font scroll-list-item px-2" hover-class="bg-light">
+					<view class="flex align-center font scroll-list-item px-2" hover-class="bg-light" @tap="selectPlay(item.id)">
 						<text class="flex-1 text-ellipsis">{{ item.audioName }}</text>
 						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
 						<view class="flex-1 ml-3 flex align-center">
@@ -118,7 +118,7 @@
 			}
 		},
 		methods: {
-			...mapActions(['init','playOrpause','preOrNext','sliderToPlay']),
+			...mapActions(['playOrpause','preOrNext','sliderToPlay','selectPlay']),
 			//改变状态
 			changeStatus(statusTtpe){
 				this[statusTtpe] = !this[statusTtpe]
@@ -126,6 +126,7 @@
 		},
 		computed:{
 			...mapState({
+				playStatus:({ audio }) => audio.playStatus,
 				currentPlayIndex:({ audio }) => audio.currentPlayIndex,
 				durationTime:({ audio }) => audio.durationTime,
 				currentTime:({ audio }) => audio.currentTime,
@@ -148,6 +149,9 @@
 </script>
 
 <style scoped lang="scss">
+.music-container{
+	height: 100vh;
+}
 .music{
 	height: 420rpx;
 	&-image{
