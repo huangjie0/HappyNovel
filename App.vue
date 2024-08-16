@@ -21,4 +21,5 @@
 	@import url("/common/css/animate.css");
 	/* 自定义动画库 */
 	@import url("/common/css/myanimate.css");
+	@import url("/common/css/theme.css");
 </style>
