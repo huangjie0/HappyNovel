@@ -1,15 +1,16 @@
 <template>
 	<view class="flex align-center">
-		<Icon icon-id="icon-jiantou-copy" class="m-2" @tap="quit"></Icon>
+		<Icon icon-id="icon-jiantou-copy" class="m-2" @tap="quit" :icon-color="theme"></Icon>
 		<view class="font-lg"><slot></slot></view>
 	</view>
 </template>
 
 <script>
 	export default {
-		data(){
-			return {
-				
+		props:{
+			theme:{
+				type:String,
+				default: 'bg-white'
 			}
 		},
 		methods:{
