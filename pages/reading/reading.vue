@@ -9,6 +9,9 @@
 			</view>
 		</view>
 		<!-- 设置结束 -->
+		<!-- 中间内容区域 -->
+		
+		
 		<!-- 设置底部部分 -->
 		<view class="reading-bottom flex align-center fixed-bottom bg-white shadow font animated" hover-class="slideInUp">
 			<view class="flex-1 flex flex-column align-center">
