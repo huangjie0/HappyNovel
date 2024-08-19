@@ -2,8 +2,8 @@
 	<view class="flex align-center tab-top border">
 		<block v-for="(item,index) in tabArr" :key="index">
 			<view class="flex flex-column align-center justify-between tab-top-container" @tap="changeTab(index)">
-				<view class="pt-1 text-light-black animated fast" :class="tabIndex == index ? 'font-weight-bold':'' ">{{ item }}</view>
-				<view class="tab-top-line rounded animated zoomIn fast" v-if="tabIndex === index"></view>
+				<view class="pt-1 text-light-black animated faster" :class="tabIndex == index ? 'font-weight-bold':'pulse'">{{ item }}</view>
+				<view class="tab-top-line rounded animated zoomIn faster" v-if="tabIndex === index"></view>
 			</view>
 		</block>
 	</view>
