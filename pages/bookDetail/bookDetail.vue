@@ -17,7 +17,7 @@
 			</view>
 		</view>
 		<view class="shadow tab-container">
-			<TabTop :tab-arr="['详情','目录']"></TabTop>
+			<TabTop :tab-arr="['详情','目录']" @getTabIndex="getTabIndex"></TabTop>
 		</view>
 	</view>
 </template>
@@ -29,6 +29,12 @@
 		components:{
 			PageTitle,
 			TabTop
+		},
+		methods:{
+			getTabIndex(index){
+				console.log(index);
+				
+			}
 		}
 	}
 </script>
