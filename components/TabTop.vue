@@ -34,13 +34,13 @@
 <style lang="scss" scoped>
 .tab-top{
 	justify-content: space-around;
-	height: 60rpx;
+	height: 80rpx;
 	&-container{
-		height: 60rpx;
+		height: 80rpx;
 	}
 	&-line{
-		width: 60rpx;
-		height: 6rpx;
+		width: 80rpx;
+		height: 8rpx;
 		background-color: #fb5f39;
 	}
 }
