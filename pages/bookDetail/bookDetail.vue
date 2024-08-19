@@ -2,7 +2,7 @@
 	<view>
 		<PageTitle>图片详情</PageTitle>
 		<view class="book-details flex align-center py-2">
-			<image src="@/static/Rebook/Rebook1.jpg" mode="widthFix" lazy-load class="book-details-image flex-1 mx-2 rounded"></image>
+			<image src="@/static/Rebook/Rebook1.jpg" mode="widthFix" lazy-load class="flex-1 mx-2 rounded"></image>
 			<view class="flex-2 mx-2">
 				<view class="book-details-name">
 					西游记
@@ -16,22 +16,19 @@
 				</view>
 			</view>
 		</view>
+		<view class="shadow tab-container">
+			<TabTop :tab-arr="['详情','目录']"></TabTop>
+		</view>
 	</view>
 </template>
 
 <script>
 	import PageTitle from '@/components/PageTitle.vue'
+	import TabTop from '@/components/TabTop.vue'
 	export default {
-		data() {
-			return {
-				
-			}
-		},
 		components:{
-			PageTitle
-		},
-		methods: {
-			
+			PageTitle,
+			TabTop
 		}
 	}
 </script>
@@ -40,11 +37,11 @@
 .book-details{
 	background-color: #a8b0c3;
 	height: 250rpx;
-	&-image{
-		
-	}
 	&-name{
 		font-size: 45rpx;
 	}
+}
+.tab-container{
+	height:1210rpx;
 }
 </style>
