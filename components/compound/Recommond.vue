@@ -6,7 +6,7 @@
 		</ListHeader>
 		<view class="flex align-center">
 			<block v-for="(item,index) in rebooks" :key="index" class="rebook-image">
-				<view class="flex-1 rebook-image flex-column flex align-center position-relative">
+				<view class="flex-1 rebook-image flex-column flex align-center position-relative" @tap="toBookDetail(index)">
 					<image :src="item.src" class="rebook-image" mode="aspectFill"></image>
 					<text class="font my-1 text-light-black">{{ item.name }}</text>
 					<icon icon-id="icon-erji" icon-color="text-light-white" icon-size="30" class="position-absolute er-ji"></icon>
@@ -26,6 +26,15 @@
 			rebooks:{
 				type:Array,
 				default:()=>[]
+			}
+		},
+		methods:{
+			toBookDetail(index){
+				if(index === 0){
+					uni.navigateTo({
+						url:'/pages/bookDetail/bookDetail'
+					})
+				}
 			}
 		}
 	}
