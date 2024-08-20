@@ -110,13 +110,13 @@
 	import PageTitle from '@/components/PageTitle.vue'
 	import { mapState,mapMutations,mapActions } from "vuex"
 	import musicResourecs from '../../store/audio/musicResourecs.js';
-	import tool from '@/common/tool.js';
+	import filter from '@/common/filter.js';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	
 	export default {
 		//局部过滤器
 		filters:{
-			...tool
+			...filter
 		},
 		data(){
 			return{
