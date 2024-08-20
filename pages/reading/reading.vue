@@ -36,11 +36,13 @@
 
 <script>
 	import test from '@/common/test.js'
+	import tool from '@/common/tool.js'
 	export default {
 		data() {
 			return {
 				novalName:test.name,  //小说姓名
-				chapterCatalog:test.chapterCatalog  //小说目录
+				chapterCatalog:test.chapterCatalog,  //小说目录
+				calHeight:0
 			}
 		},
 		methods: {
