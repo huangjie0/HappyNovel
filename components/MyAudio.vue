@@ -32,12 +32,12 @@
 
 <script>
 	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
-	import tool from '@/common/tool.js';
+	import filter from '@/common/filter.js';
 	import musicResourecs from '../store/audio/musicResourecs.js';
 	export default {
 		//局部过滤器
 		filters:{
-			...tool
+			...filter
 		},
 		computed:{
 			...mapState({
