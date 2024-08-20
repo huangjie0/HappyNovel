@@ -34,7 +34,7 @@
 			"path" : "pages/ReadList/ReadList",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "榜单",
 				"enablePullDownRefresh" : false
 			}
 		},
@@ -66,21 +66,21 @@
 			"path" : "pages/musicDetail/musicDetail",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "音乐详情"
 			}
 		},
 		{
 			"path" : "pages/bookDetail/bookDetail",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "图片详情"
 			}
 		},
 		{
 			"path" : "pages/reading/reading",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "阅读模式"
 			}
 		}
 	],
