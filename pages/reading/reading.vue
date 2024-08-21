@@ -26,7 +26,7 @@
 		<!-- 目录结束 -->
 		
 		<!-- 字体设置开始 -->
-		<view class="fixed-bottom bg-white font-setting px-3 pt-2"> 
+		<view class="fixed-bottom bg-white font-setting px-3 pt-2" v-if="typeFaceStatus"> 
 			<view class="flex">字体：<slider min="20" :value="myFontSize" max="50" @change="changeFontSize" @changing="changeFontSize" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 			<view class="flex">间距：<slider min="20" :value="myLineHeight" max="100" @change="changeLineHeight" @changing="changeLineHeight" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 		</view>
@@ -41,7 +41,7 @@
 				<icon icon-id="icon-yanjing" icon-size="55"></icon>
 				<view>夜间模式</view>
 			</view>
-			<view class="flex-1 flex flex-column align-center">
+			<view class="flex-1 flex flex-column align-center" @tap="changeTypeFaceStatus(true)">
 				<icon icon-id="icon-ziti1" icon-size="55"></icon>
 				<view>字体</view>
 			</view>
@@ -51,7 +51,7 @@
 			</view>
 		</view>
 		<!-- 文本部分 -->
-		<swiper class="px-2" :style="{ height:`${calHeight}rpx`}" @tap="changeSetStatus" :current="chapterIndex" @change="swiperChange">
+		<swiper class="px-2" :style="{ height:`${calHeight}rpx`,fontSize:`${myFontSize}rpx`,lineHeight:`${myLineHeight}rpx`}" @tap="changeSetStatus" :current="chapterIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in loadedChapters" :key="item.id">
 				<scroll-view scroll-y :style="{ height:`${calHeight}rpx`}">
 					<uniLoadMore status="loading" v-if="!item.text"></uniLoadMore>
@@ -74,9 +74,12 @@
 				novalName:test.name,  //小说姓名
 				chapterCatalog:test.chapterCatalog,  //小说目录
 				calHeight:0,
+				typeFaceStatus:false,
 				loadedChapters:[], //已经加载的章节
 				setStatus:false,
-				chapterIndex:0 //当前章节的标识
+				chapterIndex:0, //当前章节的标识
+				myFontSize:uni.getStorageSync('myFontSize') ? uni.getStorageSync('myFontSize') : 20,
+				myLineHeight: uni.getStorageSync('myLineHeight') ? uni.getStorageSync('myLineHeight') : 45
 			}
 		},
 		components:{
@@ -90,8 +93,19 @@
 			}
 		},
 		methods: {
-			changeFontSize(){
-				
+			changeTypeFaceStatus(Bol){
+				this.typeFaceStatus = Bol
+				// if(this.)
+			},
+			//字体改变触发
+			changeFontSize(e){
+				this.myFontSize = e.detail.value;
+				uni.setStorageSync('myFontSize',this.myFontSize)
+			},
+			//行距改变触发
+			changeLineHeight(e){
+				this.myLineHeight = e.detail.value;
+				uni.setStorageSync('myLineHeight',this.myLineHeight)
 			},
 			//预加载方法
 			preLoad(){
@@ -122,6 +136,10 @@
 				}
 			},
 			changeSetStatus(){
+				if(this.typeFaceStatus && !this.setStatus){
+					this.changeTypeFaceStatus(false)
+					return
+				}
 				this.setStatus = !this.setStatus
 			},
 			showCatalogue(){
