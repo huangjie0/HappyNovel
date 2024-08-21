@@ -15,7 +15,7 @@
 		<!-- 目录开始 -->
 		<uniDrawer ref="drawerRef" :width="230">
 			<view class="chapter-selection flex align-center justify-center">章节选择</view>
-			<scroll-view scroll-y :style="{ height:`${calHeight - 80 }rpx` }" >
+			<scroll-view scroll-y :style="{ height:`${calHeight - 80 }rpx`}" >
 				<block v-for="item in chapterCatalog" :key="item.id">
 					<view class="px-1 py-2 text-ellipsis" @tap="toPointChapter(item.id)">
 						{{ item.title }}
@@ -87,7 +87,7 @@
 				}))
 			},
 			toPointChapter(id){
-				
+				console.log(id);
 			},
 			changeIndex(index){
 				this.chapterIndex = index
