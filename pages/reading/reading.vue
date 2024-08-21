@@ -7,7 +7,7 @@
 			<view class="reading-container flex align-center">
 				<icon icon-id="icon-jiantou-copy px-2"></icon>
 				<text>{{ novalName }} </text>
-				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ chapterCatalog[0].title }}</text>
+				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
 			</view>
 		</view>
 		<!-- 设置结束 -->
@@ -17,7 +17,7 @@
 			<view class="chapter-selection flex align-center justify-center">章节选择</view>
 			<scroll-view scroll-y :style="{ height:`${calHeight - 80 }rpx`}" >
 				<block v-for="item in chapterCatalog" :key="item.id">
-					<view class="px-1 py-2 text-ellipsis" @tap="toPointChapter(item.id)">
+					<view class="px-1 py-2 text-ellipsis border-bottom rounded" :class="chapterIndex + 1 === item.id ? 'curChapter' : ''" @tap="toPointChapter(item.id)">
 						{{ item.title }}
 					</view>
 				</block>
@@ -77,6 +77,12 @@
 			uniLoadMore,
 			uniDrawer
 		},
+		computed:{
+			//当前章节标题
+			curChapterTitle(){
+				return this.chapterCatalog[this.chapterIndex].title
+			}
+		},
 		methods: {
 			//预加载方法
 			preLoad(){
@@ -87,7 +93,10 @@
 				}))
 			},
 			toPointChapter(id){
-				console.log(id);
+				let curIndex = this.chapterCatalog.findIndex(item => item.id === id)
+				if(this.chapterIndex == curIndex ) return
+				this.changeIndex(curIndex)
+				this.deplyLoad()
 			},
 			changeIndex(index){
 				this.chapterIndex = index
@@ -140,5 +149,9 @@
 
 .chapter-selection{
 	height: 80rpx;
+}
+.curChapter{
+	background-color: #8395a7;
+	color: white;
 }
 </style>
