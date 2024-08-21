@@ -43,7 +43,6 @@
 				<view>更多</view>
 			</view>
 		</view>
-		
 		<!-- 文本部分 -->
 		<swiper class="px-2" :style="{ height:`${calHeight}rpx`}" @tap="changeSetStatus" :current="chapterIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in loadedChapters" :key="item.id">
