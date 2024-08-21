@@ -24,6 +24,13 @@
 			</scroll-view>
 		</uniDrawer>
 		<!-- 目录结束 -->
+		
+		<!-- 字体设置开始 -->
+		<view class="fixed-bottom bg-white font-setting px-3 pt-2"> 
+			<view class="flex">字体：<slider min="20" :value="myFontSize" max="50" @change="changeFontSize" @changing="changeFontSize" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
+			<view class="flex">间距：<slider min="20" :value="myLineHeight" max="100" @change="changeLineHeight" @changing="changeLineHeight" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
+		</view>
+		<!-- 字体设置结束 -->
 		<!-- 设置底部部分 -->
 		<view class="reading-bottom flex align-center fixed-bottom bg-white shadow font animated slideInUp" v-if="setStatus">
 			<view class="flex-1 flex flex-column align-center" @tap="showCatalogue">
@@ -83,6 +90,9 @@
 			}
 		},
 		methods: {
+			changeFontSize(){
+				
+			},
 			//预加载方法
 			preLoad(){
 				test.chapterCatalog.forEach(item => this.loadedChapters.push({
@@ -152,5 +162,8 @@
 .curChapter{
 	background-color: #8395a7;
 	color: white;
+}
+.font-setting{
+	height: 180rpx;
 }
 </style>
