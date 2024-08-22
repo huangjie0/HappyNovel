@@ -2,3 +2,34 @@
 	background-color: #4c5662;
 	color: #c1cbcd;	
 }
+
+/* 背景色块 */
+/* 天蓝 */
+.blue-theme{
+	background-color: #1e90ff;
+	color: rgba(255, 255, 255, .7);
+}
+
+/* 护眼 */
+.eye-help-theme{
+	background-color: #d1ccc0;
+	color: #2c2c54;
+}
+
+/* 淡灰 */
+.light-gret-theme{
+	background-color: #747d8c;
+	color: rgba(255, 255, 255, .7);
+}
+
+/* 早晨 */
+.morning-theme{
+	background-color: #f8f9fa ;
+	color: #2c2c54;
+}
+
+/* 夜间 */
+.night-theme{
+	background-color: #4c5662;
+	color: #c1cbcd;
+}
