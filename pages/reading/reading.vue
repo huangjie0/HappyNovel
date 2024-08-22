@@ -24,7 +24,19 @@
 			</scroll-view>
 		</uniDrawer>
 		<!-- 目录结束 -->
-		
+		<!-- 更多设置开始 -->
+		<view class="fixed-bottom bg-white more-setting px-3">
+			<view class="flex">亮度：<slider min="0" :value="brightNess" @change="setBrightNess" max="100" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
+			<view class="flex luminance font text-light-black">
+				<block v-for="item in themes" :key="item.id">
+					<view class="flex-1">
+						<view :class="item.id" class="color-block border rounded mx-1"></view>
+						<view class="text-center">{{ item.name }}</view>
+					</view>
+				</block>
+			</view>
+		</view>
+		<!-- 更多设置结束 -->
 		<!-- 字体设置开始 -->
 		<view class="fixed-bottom bg-white font-setting px-3 pt-2" v-if="typeFaceStatus"> 
 			<view class="flex">字体：<slider min="20" :value="myFontSize" max="50" @change="changeFontSize" @changing="changeFontSize" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
@@ -74,6 +86,34 @@
 				novalName:test.name,  //小说姓名
 				chapterCatalog:test.chapterCatalog,  //小说目录
 				calHeight:0,
+				status:{
+					set:false,
+					catalog:false,
+					typeFace:false
+				},
+				themes:[
+					{
+						id:'blue-theme',
+						name:'天蓝'
+					},
+					{
+						id:'eye-help-theme',
+						name:'护眼'
+					},
+					{
+						id:'light-gret-theme',
+						name:'淡灰'
+					},
+					{
+						id:'morning-theme',
+						name:'早晨'
+					},
+					{
+						id:'night-theme',
+						name:'夜间 '
+					}
+				],
+				brightNess:0, //亮度
 				typeFaceStatus:false,
 				loadedChapters:[], //已经加载的章节
 				setStatus:false,
@@ -93,6 +133,30 @@
 			}
 		},
 		methods: {
+			//改变状态
+			changeStatus(){
+				// this.status[]
+			},
+			//改变设置亮度
+			setBrightNess(e){
+				let newVal = e.detail.value
+				this.brightNess = newVal;
+				uni.setScreenBrightness({
+					value: newVal * 8 / 100,
+					success:(e)=>{
+						console.log("success!");
+						console.log(e);
+					}
+				})
+			},
+			//获取亮度
+			getBrightNess(){
+				//获取亮度的api
+				uni.getScreenBrightness({
+					success: val => this.brightNess = Math.floor(val.value) / 8 * 100  
+					
+				})
+			},
 			changeTypeFaceStatus(Bol){
 				this.typeFaceStatus = Bol
 				// if(this.)
@@ -157,6 +221,9 @@
 		onLoad(e){
 			this.preLoad()
 			this.deplyLoad()
+		},
+		created(){
+			this.getBrightNess()
 		}
 	}
 </script>
@@ -183,5 +250,14 @@
 }
 .font-setting{
 	height: 180rpx;
+}
+.more-setting{
+	height: 250rpx;
+}
+.luminance{
+	justify-content: space-between;
+	.color-block{
+		height: 80rpx;
+	}
 }
 </style>
