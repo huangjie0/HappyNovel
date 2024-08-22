@@ -11,7 +11,6 @@
 			</view>
 		</view>
 		<!-- 设置结束 -->
-				
 		<!-- 目录开始 -->
 		<uniDrawer ref="drawerRef" :width="230">
 			<view class="chapter-selection flex align-center justify-center">章节选择</view>
@@ -25,7 +24,7 @@
 		</uniDrawer>
 		<!-- 目录结束 -->
 		<!-- 更多设置开始 -->
-		<view class="fixed-bottom bg-white more-setting px-3">
+		<view class="fixed-bottom bg-white more-setting px-3 animated slideInUp" v-if="moreStatus">
 			<view class="flex">亮度：<slider min="0" :value="brightNess" @change="setBrightNess" max="100" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 			<view class="flex luminance font text-light-black">
 				<block v-for="item in themes" :key="item.id">
@@ -57,7 +56,7 @@
 				<icon icon-id="icon-ziti1" icon-size="55"></icon>
 				<view>字体</view>
 			</view>
-			<view class="flex-1 flex flex-column align-center">
+			<view class="flex-1 flex flex-column align-center" @tap="changeMoreStatus(true)">
 				<icon icon-id="icon-diqiuhuanqiu" icon-size="55"></icon>
 				<view>更多</view>
 			</view>
@@ -86,11 +85,6 @@
 				novalName:test.name,  //小说姓名
 				chapterCatalog:test.chapterCatalog,  //小说目录
 				calHeight:0,
-				status:{
-					set:false,
-					catalog:false,
-					typeFace:false
-				},
 				themes:[
 					{
 						id:'blue-theme',
@@ -115,6 +109,7 @@
 				],
 				brightNess:0, //亮度
 				typeFaceStatus:false,
+				moreStatus:false,
 				loadedChapters:[], //已经加载的章节
 				setStatus:false,
 				chapterIndex:0, //当前章节的标识
@@ -133,20 +128,12 @@
 			}
 		},
 		methods: {
-			//改变状态
-			changeStatus(){
-				// this.status[]
-			},
 			//改变设置亮度
 			setBrightNess(e){
 				let newVal = e.detail.value
 				this.brightNess = newVal;
 				uni.setScreenBrightness({
-					value: newVal * 8 / 100,
-					success:(e)=>{
-						console.log("success!");
-						console.log(e);
-					}
+					value: newVal * 8 / 100
 				})
 			},
 			//获取亮度
@@ -154,12 +141,16 @@
 				//获取亮度的api
 				uni.getScreenBrightness({
 					success: val => this.brightNess = Math.floor(val.value) / 8 * 100  
-					
 				})
 			},
 			changeTypeFaceStatus(Bol){
 				this.typeFaceStatus = Bol
-				// if(this.)
+				if(this.typeFaceStatus) this.changeSetStatus()
+			},
+			//改变更多选项
+			changeMoreStatus(Bol){
+				this.moreStatus = Bol
+				if(this.moreStatus) this.changeSetStatus()
 			},
 			//字体改变触发
 			changeFontSize(e){
@@ -200,9 +191,12 @@
 				}
 			},
 			changeSetStatus(){
-				if(this.typeFaceStatus && !this.setStatus){
-					this.changeTypeFaceStatus(false)
-					return
+				if(!this.setStatus){
+					if(this.typeFaceStatus || this.moreStatus){
+						this.changeTypeFaceStatus(false)
+						this.changeMoreStatus(false)
+						return
+					}
 				}
 				this.setStatus = !this.setStatus
 			},
