@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "图片详情",
+  "usingComponents": {
+    "page-title": "/components/PageTitle",
+    "tab-top": "/components/TabTop"
+  }
+}

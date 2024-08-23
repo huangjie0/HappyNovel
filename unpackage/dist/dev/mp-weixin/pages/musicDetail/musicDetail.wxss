@@ -24,6 +24,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.music-container.data-v-51ae9798 {
+  height: 100vh;
+}
 .music.data-v-51ae9798 {
   height: 420rpx;
 }
@@ -50,6 +53,7 @@
 .bottom-container.data-v-51ae9798 {
   height: 200rpx;
   border-radius: 30rpx;
+  z-index: 0;
 }
 .bottom-container-2.data-v-51ae9798 {
   height: 400rpx;
@@ -63,5 +67,10 @@
 }
 .scroll-list-item.data-v-51ae9798 {
   height: 85rpx;
+}
+.popup.data-v-51ae9798 {
+  width: 600rpx;
+  height: 850rpx;
+  border-radius: 40rpx;
 }
 

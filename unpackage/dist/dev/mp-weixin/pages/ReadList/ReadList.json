@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "榜单",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "page-title": "/components/PageTitle",
