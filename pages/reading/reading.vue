@@ -133,6 +133,13 @@
 			}
 		},
 		methods: {
+			//初始化
+			init(id){
+				let curIndex = this.chapterCatalog.findIndex(item => item.id == id)
+				this.changeIndex(curIndex)
+				this.preLoad()
+				this.deplyLoad()
+			},
 			recoil(){
 				uni.navigateBack({
 					delta:1
@@ -190,7 +197,7 @@
 				}))
 			},
 			toPointChapter(id){
-				let curIndex = this.chapterCatalog.findIndex(item => item.id === id)
+				let curIndex = this.chapterCatalog.findIndex(item => item.id === Number(id))
 				if(this.chapterIndex == curIndex ) return
 				this.changeIndex(curIndex)
 				this.deplyLoad()
@@ -232,8 +239,7 @@
 			})
 		},
 		onLoad(e){
-			this.preLoad()
-			this.deplyLoad()
+			this.init(e.chapterId)
 		},
 		created(){
 			this.getBrightNess()
