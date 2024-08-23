@@ -3,9 +3,9 @@
 		<!-- 占位 -->
 		<view class="cal"></view>
 		<!-- 设置开始 -->
-		<view class="fixed-top bg-white shadow animated slideInDown" v-if="setStatus">
+		<view :class="curTheme" class="fixed-top shadow animated slideInDown" v-if="setStatus">
 			<view class="reading-container flex align-center">
-				<icon icon-id="icon-jiantou-copy px-2"></icon>
+				<icon icon-id="icon-jiantou-copy px-2" @tap="recoil"></icon>
 				<text>{{ novalName }} </text>
 				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
 			</view>
@@ -24,7 +24,7 @@
 		</uniDrawer>
 		<!-- 目录结束 -->
 		<!-- 更多设置开始 -->
-		<view class="fixed-bottom bg-white more-setting px-3 animated slideInUp" v-if="moreStatus">
+		<view :class="curTheme" class="fixed-bottom more-setting px-3 animated slideInUp" v-if="moreStatus">
 			<view class="flex">亮度：<slider min="0" :value="brightNess" @change="setBrightNess" max="100" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 			<view class="flex luminance font text-light-black">
 				<block v-for="item in themes" :key="item.id">
@@ -37,18 +37,18 @@
 		</view>
 		<!-- 更多设置结束 -->
 		<!-- 字体设置开始 -->
-		<view class="fixed-bottom bg-white font-setting px-3 pt-2 animated slideInUp" v-if="typeFaceStatus"> 
+		<view :class="curTheme" class="fixed-bottom font-setting px-3 pt-2 animated slideInUp" v-if="typeFaceStatus"> 
 			<view class="flex">字体：<slider min="20" :value="myFontSize" max="50" @change="changeFontSize" @changing="changeFontSize" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 			<view class="flex">间距：<slider min="20" :value="myLineHeight" max="100" @change="changeLineHeight" @changing="changeLineHeight" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 		</view>
 		<!-- 字体设置结束 -->
 		<!-- 设置底部部分 -->
-		<view class="reading-bottom flex align-center fixed-bottom bg-white shadow font animated slideInUp" v-if="setStatus">
+		<view :class="curTheme" class="reading-bottom flex align-center fixed-bottom shadow font animated slideInUp" v-if="setStatus">
 			<view class="flex-1 flex flex-column align-center" @tap="showCatalogue">
 				<icon icon-id="icon-xueyuan-mulu" icon-size="55"></icon>
 				<view>目录</view>
 			</view>
-			<view class="flex-1 flex flex-column align-center">
+			<view class="flex-1 flex flex-column align-center" @tap="nightPattern">
 				<icon icon-id="icon-yanjing" icon-size="55"></icon>
 				<view>夜间模式</view>
 			</view>
@@ -62,7 +62,7 @@
 			</view>
 		</view>
 		<!-- 文本部分 -->
-		<swiper class="px-2" :style="{ height:`${calHeight}rpx`,fontSize:`${myFontSize}rpx`,lineHeight:`${myLineHeight}rpx`}" @tap="changeSetStatus" :current="chapterIndex" @change="swiperChange">
+		<swiper :class="curTheme" class="px-2" :style="{ height:`${calHeight}rpx`,fontSize:`${myFontSize}rpx`,lineHeight:`${myLineHeight}rpx`}" @tap="changeSetStatus" :current="chapterIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in loadedChapters" :key="item.id">
 				<scroll-view scroll-y :style="{ height:`${calHeight}rpx`}">
 					<uniLoadMore status="loading" v-if="!item.text"></uniLoadMore>
@@ -126,13 +126,26 @@
 			//当前章节标题
 			curChapterTitle(){
 				return this.chapterCatalog[this.chapterIndex].title
+			},
+			//当前主题
+			curTheme(){
+				return this.themes[this.themeIndex].id
 			}
 		},
 		methods: {
+			recoil(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
+			//夜间模式
+			nightPattern(){
+				this.themeIndex !== 4 ? this.changeThemeIndex('night-theme') : this.changeThemeIndex('morning-theme')
+			},
 			//修改主题类名
 			changeThemeIndex(id){
 				let curIndex = this.themes.findIndex(theme => theme.id == id);
-				this.themeIndex = curIndex
+				this.themeIndex = curIndex;
 			}, 
 			//改变设置亮度
 			setBrightNess(e){
