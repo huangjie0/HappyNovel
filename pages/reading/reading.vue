@@ -29,7 +29,7 @@
 			<view class="flex luminance font text-light-black">
 				<block v-for="item in themes" :key="item.id">
 					<view class="flex-1">
-						<view :class="item.id" class="color-block border rounded mx-1"></view>
+						<view :class="item.id" class="color-block border rounded mx-1" @tap="changeThemeIndex(item.id)"></view>
 						<view class="text-center">{{ item.name }}</view>
 					</view>
 				</block>
@@ -37,7 +37,7 @@
 		</view>
 		<!-- 更多设置结束 -->
 		<!-- 字体设置开始 -->
-		<view class="fixed-bottom bg-white font-setting px-3 pt-2" v-if="typeFaceStatus"> 
+		<view class="fixed-bottom bg-white font-setting px-3 pt-2 animated slideInUp" v-if="typeFaceStatus"> 
 			<view class="flex">字体：<slider min="20" :value="myFontSize" max="50" @change="changeFontSize" @changing="changeFontSize" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 			<view class="flex">间距：<slider min="20" :value="myLineHeight" max="100" @change="changeLineHeight" @changing="changeLineHeight" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
 		</view>
@@ -107,6 +107,7 @@
 						name:'夜间 '
 					}
 				],
+				themeIndex: 3,
 				brightNess:0, //亮度
 				typeFaceStatus:false,
 				moreStatus:false,
@@ -128,6 +129,11 @@
 			}
 		},
 		methods: {
+			//修改主题类名
+			changeThemeIndex(id){
+				let curIndex = this.themes.findIndex(theme => theme.id == id);
+				this.themeIndex = curIndex
+			}, 
 			//改变设置亮度
 			setBrightNess(e){
 				let newVal = e.detail.value
