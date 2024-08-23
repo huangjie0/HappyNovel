@@ -107,7 +107,7 @@
 						name:'夜间 '
 					}
 				],
-				themeIndex: uni.getStorageSync('themeIndex') === 3 ? 3 : uni.getStorageSync('themeIndex'),
+				themeIndex: uni.getStorageSync('themeIndex') == 3 ? 3 : uni.getStorageSync('themeIndex'),
 				brightNess:0, //亮度
 				typeFaceStatus:false,
 				moreStatus:false,
@@ -153,7 +153,7 @@
 			changeThemeIndex(id){
 				let curIndex = this.themes.findIndex(theme => theme.id == id);
 				this.themeIndex = curIndex;
-				uni.setStorageSync('themeIndex',curIndex);
+				uni.setStorageSync('themeIndex',curIndex)
 			}, 
 			//改变设置亮度
 			setBrightNess(e){
