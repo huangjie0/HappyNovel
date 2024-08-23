@@ -232,18 +232,18 @@
 				this.changeSetStatus()
 			}
 		},
-		mounted(){
-			tool.calSurplusHeight({
-				pageID:this,
-				pos:'cal',
-				success: val => this.calHeight = val
-			})
-		},
 		onLoad(e){
 			this.init(e.chapterId)
 		},
 		created(){
 			this.getBrightNess()
+			this.$nextTick(()=>{
+				tool.calSurplusHeight({
+					pageID:this,
+					pos:'cal',
+					success: val => this.calHeight = val
+				})
+			})
 		}
 	}
 </script>
