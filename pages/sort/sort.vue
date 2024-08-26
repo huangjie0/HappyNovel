@@ -6,13 +6,13 @@
 			<!-- 左侧 -->
 			<scroll-view scroll-y :style="{ height:`${calHeight}rpx` }" class="font scroll text-light-black">
 				<block v-for="(item,index) in leftList" :key="index">
-					<view class="scroll-item" @tap="changeLeftList(index)">
+					<view class="scroll-item animated faster" @tap="changeLeftList(index)" :class="leftIndex === index ? 'left-active pulse font-weight-bold' : ''">
 						{{ item }}
 					</view>
 				</block>
 			</scroll-view>
 			<!-- 右侧 -->
-			<scroll-view scroll-y :scroll-into-view="rightIndex" scroll-with-animation :style="{ height:`${calHeight}rpx` }">
+			<scroll-view scroll-y :scroll-into-view="rightIndex" scroll-with-animation :style="{ height:`${calHeight}rpx` }" @scroll="changeRightList">
 				<block v-for="(item,index) in rightList" :key="index">
 					<view class="right-list-item" :id="`right${index}`">
 						<!-- 顶部 -->
@@ -27,6 +27,8 @@
 						</view>
 					</view>
 				</block>
+				<!-- 占位符 -->
+				<view :style="{ height:`${calHeight - 320}rpx` }"></view>
 			</scroll-view>
 		</view>
 	</view>
@@ -41,7 +43,8 @@
 		data(){
 			return {
 				calHeight : 0,
-				rightIndex : `right${0}`
+				rightIndex : `right${0}`,
+				leftIndex: 0
 			}
 		},
 		components:{
@@ -57,6 +60,12 @@
 		methods:{
 			changeLeftList(id){
 				this.rightIndex = `right${id}`
+			},
+			changeRightList(e){
+				let curScollTop = e.detail.scrollTop
+				let standardVal = tool.Topx(320)
+				let curIndex = Math.round(curScollTop / standardVal)
+				this.leftIndex = curIndex
 			}
 		},
 		computed:{
@@ -97,5 +106,8 @@
 		&-bottom{
 			height: 170rpx;
 		}
+	}
+	.left-active{
+		color: #f7646d;
 	}
 </style>
