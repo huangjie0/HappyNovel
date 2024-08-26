@@ -9,7 +9,7 @@
 		</scroll-view>
 		<!-- 收听历史 -->
 		<scroll-view scroll-y v-else :style="{ height:`${calHeight}rpx`}">
-			222
+			<view></view>
 		</scroll-view>
 	</view>
 </template>
