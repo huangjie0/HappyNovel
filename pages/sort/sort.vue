@@ -6,18 +6,25 @@
 			<!-- 左侧 -->
 			<scroll-view scroll-y :style="{ height:`${calHeight}rpx` }" class="font scroll text-light-black">
 				<block v-for="(item,index) in leftList" :key="index">
-					<view class="scroll-item">
+					<view class="scroll-item" @tap="changeLeftList(index)">
 						{{ item }}
 					</view>
 				</block>
 			</scroll-view>
 			<!-- 右侧 -->
-			<scroll-view scroll-y :style="{ height:`${calHeight}rpx` }">
+			<scroll-view scroll-y :scroll-into-view="rightIndex" scroll-with-animation :style="{ height:`${calHeight}rpx` }">
 				<block v-for="(item,index) in rightList" :key="index">
-					<view>
+					<view class="right-list-item" :id="`right${index}`">
 						<!-- 顶部 -->
-						<view></view>
-						<view></view>
+						<view class="right-list-item-top flex justify-center">
+							<text class="mr-1">{{ item.text }}</text>
+							<icon icon-id="icon-youjiantou" icon-size="40"></icon>
+						</view>
+						<view class="right-list-item-bottom bg-white font flex flex-wrap rounded">
+							<block v-for="(mitem,mindex) in item.content" :key="mindex">
+								<view class="right-list-item-content flex justify-center align-center">{{ mitem }}</view>
+							</block>
+						</view>
 					</view>
 				</block>
 			</scroll-view>
@@ -33,7 +40,8 @@
 	export default {
 		data(){
 			return {
-				calHeight : 0
+				calHeight : 0,
+				rightIndex : `right${0}`
 			}
 		},
 		components:{
@@ -45,6 +53,11 @@
 				pos:'cal',
 				success: val => this.calHeight = val
 			})
+		},
+		methods:{
+			changeLeftList(id){
+				this.rightIndex = `right${id}`
+			}
 		},
 		computed:{
 			leftList(){
@@ -70,6 +83,19 @@
 		&-item{
 			height: 150rpx;
 			line-height: 150rpx;
+		}
+	}
+	.right-list-item{
+		height: 250rpx;
+		margin-bottom: 70rpx;
+		&-content{
+			width: calc(100% / 3);
+		}
+		&-top{
+			height: 80rpx;
+		}
+		&-bottom{
+			height: 170rpx;
 		}
 	}
 </style>
