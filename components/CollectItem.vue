@@ -17,11 +17,6 @@
 <script>
 	export default {
 		name:"CollectItem",
-		data() {
-			return {
-				
-			};
-		},
 		props:{
 			bookImgUrl: {
 				type:String,
