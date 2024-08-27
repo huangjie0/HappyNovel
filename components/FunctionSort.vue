@@ -2,7 +2,7 @@
 	<view class="flex align-center justify-between mx-3 py-4">
 		<block v-for="(item,index) in functionSort" :key="index">			
 			<view class="flex flex-column align-center" @tap="switchToPage(index)">
-				<icon :icon-id="item.iconId" :icon-color="item.iconColor" icon-size="65"></icon>
+				<MyIcon :icon-id="item.iconId" :icon-color="item.iconColor" icon-size="65"></MyIcon>
 				<text class="mt-1 font text-light-black">{{ item.name }}</text>
 			</view>
 		</block>

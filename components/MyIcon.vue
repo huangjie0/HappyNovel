@@ -5,7 +5,7 @@
 
 <script>
 	export default {
-		name:"Icon",
+		name:"MyIcon",
 		props:{
 			iconId:{
 				type:String,

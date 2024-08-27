@@ -7,7 +7,7 @@
 			<view class="font text-light-black">
 				<slot name="tips">查看全部</slot>
 			</view>
-			<icon icon-id="icon-iconfonti" icon-color="text-light-black"></icon>
+			<MyIcon icon-id="icon-iconfonti" icon-color="text-light-black"></MyIcon>
 		</view>
 	</view>
 </template>

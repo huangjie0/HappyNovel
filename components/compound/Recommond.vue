@@ -9,7 +9,7 @@
 				<view class="flex-1 rebook-image flex-column flex align-center position-relative" @tap="toBookDetail(index)">
 					<image :src="item.src" class="rebook-image" mode="aspectFill"></image>
 					<text class="font my-1 text-light-black">{{ item.name }}</text>
-					<icon icon-id="icon-erji" icon-color="text-light-white" icon-size="30" class="position-absolute er-ji"></icon>
+					<MyIcon icon-id="icon-erji" icon-color="text-light-white" icon-size="30" class="position-absolute er-ji"></MyIcon>
 				</view>
 			</block>
 		</view>

@@ -9,7 +9,7 @@
 				<view class="font text-light-black Multi-row-truncation">
 					{{ bookSynopsis }}
 				</view>
-				<icon icon-id="icon-diandian" class="position-absolute right-0" @tap="init"></icon>
+				<MyIcon icon-id="icon-diandian" class="position-absolute right-0" @tap="init"></MyIcon>
 			</view>
 		</view>
 	</view>

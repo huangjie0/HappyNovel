@@ -1,6 +1,6 @@
 <template>
 	<view class="flex align-center">
-		<Icon icon-id="icon-jiantou-copy" class="m-2" @tap="quit" :icon-color="theme"></Icon>
+		<MyIcon icon-id="icon-jiantou-copy" class="m-2" @tap="quit" :icon-color="theme"></MyIcon>
 		<view class="font-lg"><slot></slot></view>
 	</view>
 </template>
