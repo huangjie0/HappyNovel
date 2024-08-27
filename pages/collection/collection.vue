@@ -5,7 +5,9 @@
 		<!-- 具体内容 -->
 		<!-- 我的收藏 -->
 		<scroll-view scroll-y v-if="tabIndex == 0" :style="{ height:`${calHeight}rpx` }">
-			<CollectItem @getId="getId" @showCancelCol="showCancelCol" :book-img-url="test.imgurl" :book-name="test.name" :book-synopsis="test.synopsis" :book-id="test.id"></CollectItem>
+			<block v-for="item in collectArr" :key="item.id">
+				<CollectItem @getId="getId" @showCancelCol="showCancelCol" :book-img-url="item.imgurl" :book-name="item.name" :book-synopsis="item.synopsis" :book-id="item.id"></CollectItem>
+			</block>
 		</scroll-view>
 		<!-- 收听历史 -->
 		<scroll-view scroll-y v-else :style="{ height:`${calHeight}rpx`}">
@@ -31,22 +33,21 @@
 	import CollectItem from '@/components/CollectItem.vue'
 	import tool from '@/common/tool.js'
 	import UniPopup from '@/components/uni-popup/uni-popup.vue'
+	import { books } from '@/common/book.js'
 	
 	export default {
 		data(){
 			return {
 				tabIndex:0,
 				calHeight:0,
-				test:{
-					id: 1000,
-					name: '《朝花夕拾》',
-					synopsis: '《朝花夕拾》原名《旧事重提》，是现代文学家鲁迅的散文集，收录鲁迅于1926年创作的10篇回忆性散文...',
-					imgurl: '/static/indexListImg/indexListImg4.png'
-				},
-				showCollectStatus:false
+				showCollectStatus:false,
+				collectArr:[]
 			}
 		},
 		methods:{
+			initData(){
+				this.collectArr = books
+			},
 			getTabIndex(index){
 				this.tabIndex = index
 			},
@@ -66,6 +67,9 @@
 				pos:'cal',
 				success:val => this.calHeight = val
 			})
+		},
+		onLoad(){
+			this.initData()
 		},
 		watch:{
 			showCollectStatus(newValue,oldValue){
