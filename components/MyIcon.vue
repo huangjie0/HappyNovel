@@ -1,6 +1,6 @@
 <template>
 	<!-- 图标组件封装 -->
-	<text class="iconfont" :class="[iconId,iconColor]" :style="{fontSize: `${iconSize}rpx`}"></text>
+	<text class="iconfont" :class="[iconId,iconColor]" :style="{fontSize: `${iconSize}rpx`}" @tap="myClick"></text>
 </template>
 
 <script>
@@ -16,8 +16,13 @@
 				default:'text-dark'
 			},
 			iconSize:{
-				type:String,
+				type:[String,Number],
 				default:'45'
+			}
+		},
+		methods:{
+			myClick(){
+				this.$emit('myClick')
 			}
 		}
 	}
