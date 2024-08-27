@@ -13,7 +13,14 @@
 		</scroll-view>
 		<!-- 展示取消收藏界面 -->
 		<UniPopup ref="popupRef" type="bottom" @change="changeStatus">
-			dasdasdasdsa
+			<view class="bg-white">
+				<view class="uncollect">
+					<icon icon-id="icon-xingxing" icon-color="text-danger" class="px-3"></icon>
+					<text class="font">取消收藏</text>
+				</view>
+				<view class="bg-hover-light parting-line"></view>
+				<view class="cancel">取消</view>
+			</view>
 		</UniPopup>
 	</view>
 </template>
@@ -74,5 +81,17 @@
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
+	.parting-line{
+		height: 15rpx;
+	}
+	.uncollect{
+		height: 100rpx;
+		line-height: 100rpx;
+	}
+	.cancel{
+		height: 110rpx;
+		line-height: 110rpx;
+		text-align: center;
+	}
 </style>
