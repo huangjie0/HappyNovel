@@ -6,7 +6,7 @@
 				<view class="py-1 font-md font-weight-bold">
 					{{ bookName }}
 				</view>
-				<view class="font text-light-black">
+				<view class="font text-light-black Multi-row-truncation">
 					{{ bookSynopsis }}
 				</view>
 				<icon icon-id="icon-diandian" class="position-absolute right-0" @tap="init"></icon>
