@@ -16,7 +16,7 @@
 		<!-- 展示取消收藏界面 -->
 		<UniPopup ref="popupRef" type="bottom" @change="changeStatus">
 			<view class="bg-white">
-				<view class="uncollect">
+				<view class="uncollect" @tap="cancalCollect">
 					<icon icon-id="icon-xingxing" icon-color="text-danger" class="px-3"></icon>
 					<text class="font">取消收藏</text>
 				</view>
@@ -41,7 +41,9 @@
 				tabIndex:0,
 				calHeight:0,
 				showCollectStatus:false,
-				collectArr:[]
+				collectArr:[],
+				//取消收藏id
+				uncollectId: 0
 			}
 		},
 		methods:{
@@ -52,7 +54,14 @@
 				this.tabIndex = index
 			},
 			getId(id){
-				console.log(id);
+				this.uncollectId = id
+			},
+			idToIndex(id){
+				return this.collectArr.find(item => item.id == id)
+			},
+			cancalCollect(){
+				let index = this.idToIndex(this.uncollectId)
+				this.collectArr.splice(index,1)
 			},
 			showCancelCol(bol){
 				this.$refs.popupRef.open()
