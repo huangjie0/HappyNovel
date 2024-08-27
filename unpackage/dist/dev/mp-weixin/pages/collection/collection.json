@@ -1,5 +1,10 @@
 {
   "navigationBarTitleText": "收藏",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "search-box": "/components/SearchBox",
+    "tab-top": "/components/TabTop",
+    "collect-item": "/components/CollectItem",
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
 }

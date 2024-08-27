@@ -1,0 +1,11 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/CollectItem"],{177:function(n,t,e){"use strict";e.r(t);var r=e(178),o=e(180);for(var u in o)["default"].indexOf(u)<0&&function(n){e.d(t,n,(function(){return o[n]}))}(u);e(182);var i,c=e(32),d=Object(c["default"])(o["default"],r["render"],r["staticRenderFns"],!1,null,null,null,!1,r["components"],i);d.options.__file="components/CollectItem.vue",t["default"]=d.exports},178:function(n,t,e){"use strict";e.r(t);var r=e(179);e.d(t,"render",(function(){return r["render"]})),e.d(t,"staticRenderFns",(function(){return r["staticRenderFns"]})),e.d(t,"recyclableRender",(function(){return r["recyclableRender"]})),e.d(t,"components",(function(){return r["components"]}))},179:function(n,t,e){"use strict";var r;e.r(t),e.d(t,"render",(function(){return o})),e.d(t,"staticRenderFns",(function(){return i})),e.d(t,"recyclableRender",(function(){return u})),e.d(t,"components",(function(){return r}));var o=function(){var n=this,t=n.$createElement;n._self._c},u=!1,i=[];o._withStripped=!0},180:function(n,t,e){"use strict";e.r(t);var r=e(181),o=e.n(r);for(var u in r)["default"].indexOf(u)<0&&function(n){e.d(t,n,(function(){return r[n]}))}(u);t["default"]=o.a},181:function(n,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r={name:"CollectItem",props:{bookId:{type:Number,default:0},bookImgUrl:{type:String,default:""},bookName:{type:String,default:""},bookSynopsis:{type:String,default:""}},methods:{throwId:function(n){this.$emit("getId",n)},showCancelCol:function(n){this.$emit("showCancelCol",n)},init:function(){this.showCancelCol(!0),this.throwId(this.bookId)}}};t.default=r},182:function(n,t,e){"use strict";e.r(t);var r=e(183),o=e.n(r);for(var u in r)["default"].indexOf(u)<0&&function(n){e.d(t,n,(function(){return r[n]}))}(u);t["default"]=o.a},183:function(n,t,e){}}]);
+//# sourceMappingURL=../../.sourcemap/mp-weixin/components/CollectItem.js.map
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/CollectItem-create-component',
+    {
+        'components/CollectItem-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('2')['createComponent'](__webpack_require__(177))
+        })
+    },
+    [['components/CollectItem-create-component']]
+]);

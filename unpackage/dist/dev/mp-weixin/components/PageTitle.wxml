@@ -1,1 +1,1 @@
-<view class="flex align-center data-v-187939be"><icon class="m-2 data-v-187939be" icon-id="icon-jiantou-copy" icon-color="{{theme}}" data-event-opts="{{[['tap',[['quit',['$event']]]]]}}" bindtap="__e"></icon><view class="font-lg data-v-187939be"><slot></slot></view></view>
+<view class="flex align-center data-v-187939be"><my-icon class="m-2 data-v-187939be" vue-id="12a301f0-1" icon-id="icon-jiantou-copy" icon-color="{{theme}}" data-event-opts="{{[['^tap',[['quit']]]]}}" bind:tap="__e" bind:__l="__l"></my-icon><view class="font-lg data-v-187939be"><slot></slot></view></view>

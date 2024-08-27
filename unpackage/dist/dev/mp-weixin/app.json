@@ -51,6 +51,6 @@
     ]
   },
   "usingComponents": {
-    "icon": "/components/Icon"
+    "my-icon": "/components/MyIcon"
   }
 }
