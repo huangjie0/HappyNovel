@@ -31,26 +31,26 @@
 		<view>
 			<view class="flex justify-center align-center music-button">
 				<view class="mr-3" @tap="preOrNext('pre')">
-					<icon iconId="icon-shangyixiang" iconSize="85"></icon>
+					<MyIcon iconId="icon-shangyixiang" iconSize="85"></MyIcon>
 				</view>
 				<view class="mx-5" @tap="playOrpause">
-					<icon iconSize="80" :icon-id="!playStatus ? 'icon-bofang1' : 'icon-zanting'"></icon>
+					<MyIcon iconSize="80" :icon-id="!playStatus ? 'icon-bofang1' : 'icon-zanting'"></MyIcon>
 				</view>
 				<view class="ml-2" @tap="preOrNext('next')">
-					<icon iconId="icon-xiayixiang" iconSize="85"></icon>
+					<MyIcon iconId="icon-xiayixiang" iconSize="85"></MyIcon>
 				</view>
 			</view>
 			<view class="flex justify-center align-center music-button-2 font">
 				<view class="flex flex-column align-center" @tap="changeStatus('listStatus')">
-					<icon :iconId="listStatus ? 'icon-liebiao' : 'icon-icon--'" iconSize="60"></icon>
+					<MyIcon :iconId="listStatus ? 'icon-liebiao' : 'icon-icon--'" iconSize="60"></MyIcon>
 					<text class="pt-1">播放列表</text>
 				</view>
 				<view class="flex flex-column align-center collect" @tap="changeStatus('collectStatus')">
-					<icon :iconId="collectStatus ? 'icon-xihuan2' :'icon-aixinfengxian'" iconSize="60"></icon>
+					<MyIcon :iconId="collectStatus ? 'icon-xihuan2' :'icon-aixinfengxian'" iconSize="60"></MyIcon>
 					<text class="pt-1">收藏</text>
 				</view>
 				<view class="flex flex-column align-center" @tap="changeStatus('nightStatus')">
-					<icon :iconId="nightStatus ? 'icon-yueliang' : 'icon-yejianmoshi'" iconSize="60"></icon>
+					<MyIcon :iconId="nightStatus ? 'icon-yueliang' : 'icon-yejianmoshi'" iconSize="60"></MyIcon>
 					<text class="pt-1">夜间模式</text>
 				</view>
 			</view>
@@ -67,7 +67,7 @@
 						<text class="font-weight-bold">{{singerName}}</text>
 					</view>
 				</view>
-				<icon iconId="icon-jieshao" iconSize="65" @tap="showSingerIntro"></icon>
+				<MyIcon iconId="icon-jieshao" iconSize="65" @tap="showSingerIntro"></MyIcon>
 			</view>
 			<view>
 				<view class="font-md pt-2">
@@ -91,7 +91,7 @@
 						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
 						<view class="flex-1 ml-3 flex align-center">
 							<text class="mr-2">播放</text>
-							<icon iconId="icon-bofangsanjiaoxing" iconSize="40"></icon>
+							<MyIcon iconId="icon-bofangsanjiaoxing" iconSize="40"></MyIcon>
 						</view>
 					</view>
 				</block>

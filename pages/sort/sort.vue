@@ -18,7 +18,7 @@
 						<!-- 顶部 -->
 						<view class="right-list-item-top flex justify-center">
 							<text class="mr-1">{{ item.text }}</text>
-							<icon icon-id="icon-youjiantou" icon-size="40"></icon>
+							<MyIcon icon-id="icon-youjiantou" icon-size="40"></MyIcon>
 						</view>
 						<view class="right-list-item-bottom bg-white font flex flex-wrap rounded">
 							<block v-for="(mitem,mindex) in item.content" :key="mindex">

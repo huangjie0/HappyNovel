@@ -5,7 +5,7 @@
 		<!-- 设置开始 -->
 		<view :class="curTheme" class="fixed-top shadow animated slideInDown" v-if="setStatus">
 			<view class="reading-container flex align-center">
-				<icon icon-id="icon-jiantou-copy px-2" @tap="recoil"></icon>
+				<MyIcon icon-id="icon-jiantou-copy px-2" @tap="recoil"></MyIcon>
 				<text>{{ novalName }} </text>
 				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
 			</view>
@@ -45,19 +45,19 @@
 		<!-- 设置底部部分 -->
 		<view :class="curTheme" class="reading-bottom flex align-center fixed-bottom shadow font animated slideInUp" v-if="setStatus">
 			<view class="flex-1 flex flex-column align-center" @tap="showCatalogue">
-				<icon icon-id="icon-xueyuan-mulu" icon-size="55"></icon>
+				<MyIcon icon-id="icon-xueyuan-mulu" icon-size="55"></MyIcon>
 				<view>目录</view>
 			</view>
 			<view class="flex-1 flex flex-column align-center" @tap="nightPattern">
-				<icon icon-id="icon-yanjing" icon-size="55"></icon>
+				<MyIcon icon-id="icon-yanjing" icon-size="55"></MyIcon>
 				<view>夜间模式</view>
 			</view>
 			<view class="flex-1 flex flex-column align-center" @tap="changeTypeFaceStatus(true)">
-				<icon icon-id="icon-ziti1" icon-size="55"></icon>
+				<MyIcon icon-id="icon-ziti1" icon-size="55"></MyIcon>
 				<view>字体</view>
 			</view>
 			<view class="flex-1 flex flex-column align-center" @tap="changeMoreStatus(true)">
-				<icon icon-id="icon-diqiuhuanqiu" icon-size="55"></icon>
+				<MyIcon icon-id="icon-diqiuhuanqiu" icon-size="55"></MyIcon>
 				<view>更多</view>
 			</view>
 		</view>

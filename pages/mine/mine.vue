@@ -8,7 +8,7 @@
 			</view>
 			<!-- 客服 -->
 			<view class="customer-service flex align-center rounded-circle p-1">
-				<icon icon-id="icon-erji" icon-size="30" class="px-1"></icon>
+				<MyIcon icon-id="icon-erji" icon-size="30" class="px-1"></MyIcon>
 				<text class="font">我的客服</text>
 			</view>
 		</view>
@@ -17,7 +17,7 @@
 			<view>
 				<view class="flex align-center justify-between px-2 mine-item text-light-black">				
 					<text>{{ item }}</text>
-					<icon icon-id="icon-iconfonti"></icon>
+					<MyIcon icon-id="icon-iconfonti"></MyIcon>
 				</view>
 				<view class="parting-line"></view>
 			</view>

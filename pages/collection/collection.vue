@@ -17,7 +17,7 @@
 		<UniPopup ref="popupRef" type="bottom" @change="changeStatus">
 			<view class="bg-white">
 				<view class="uncollect" @tap="cancalCollect">
-					<icon icon-id="icon-xingxing" icon-color="text-danger" class="px-3"></icon>
+					<MyIcon icon-id="icon-xingxing" icon-color="text-danger" class="px-3"></MyIcon>
 					<text class="font">取消收藏</text>
 				</view>
 				<view class="bg-hover-light parting-line"></view>
