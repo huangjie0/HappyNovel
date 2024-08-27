@@ -9,7 +9,7 @@
 				<view class="font text-light-black">
 					{{ bookSynopsis }}
 				</view>
-				<icon icon-id="icon-diandian" class="position-absolute right-0" @tap="cancalCollect"></icon>
+				<icon icon-id="icon-diandian" class="position-absolute right-0" @tap="init"></icon>
 			</view>
 		</view>
 	</view>
@@ -19,6 +19,10 @@
 	export default {
 		name:"CollectItem",
 		props:{
+			bookId:{
+				type:Number,
+				default: 0
+			},
 			bookImgUrl: {
 				type:String,
 				default:''
@@ -33,8 +37,15 @@
 			}
 		},
 		methods:{
-			cancalCollect(){
-				
+			throwId(id){
+				this.$emit("getId",id)
+			},
+			showCancelCol(bol){
+				this.$emit('showCancelCol',bol)
+			},
+			init(){
+				this.showCancelCol(true)
+				this.throwId(this.bookId)
 			}
 		}
 	}
