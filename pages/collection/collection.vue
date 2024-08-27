@@ -21,7 +21,7 @@
 					<text class="font">取消收藏</text>
 				</view>
 				<view class="bg-hover-light parting-line"></view>
-				<view class="cancel">取消</view>
+				<view class="cancel" @tap="cancal">取消</view>
 			</view>
 		</UniPopup>
 	</view>
@@ -47,6 +47,9 @@
 			}
 		},
 		methods:{
+			cancal(){
+				this.showCancelCol(false)
+			},
 			initData(){
 				this.collectArr = books
 			},
@@ -62,9 +65,10 @@
 			cancalCollect(){
 				let index = this.idToIndex(this.uncollectId)
 				this.collectArr.splice(index,1)
+				this.showCancelCol(false)
 			},
 			showCancelCol(bol){
-				this.$refs.popupRef.open()
+				bol ? this.$refs.popupRef.open() : this.$refs.popupRef.close()
 			},
 			changeStatus(e){
 				this.showCollectStatus = e.show
