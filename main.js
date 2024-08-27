@@ -1,5 +1,5 @@
 import App from './App'
-import Icon from '@/components/Icon.vue'
+import MyIcon from '@/components/MyIcon.vue'
 import store from 'store'
 
 // #ifndef VUE3
@@ -12,7 +12,7 @@ const app = new Vue({
 	store,
   ...App
 })
-Vue.component('Icon',Icon)
+Vue.component('MyIcon',MyIcon)
 app.$mount()
 // #endif
 
