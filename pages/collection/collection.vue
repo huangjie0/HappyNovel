@@ -61,7 +61,9 @@
 			})
 		},
 		watch:{
-			
+			showCollectStatus(newValue,oldValue){
+				newValue ? uni.hideTabBar({animation:true}) : uni.showTabBar({animation:true})
+			}
 		},
 		components:{
 			SearchBox,
