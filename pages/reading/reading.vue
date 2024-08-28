@@ -5,7 +5,7 @@
 		<!-- 设置开始 -->
 		<view :class="curTheme" class="fixed-top shadow animated slideInDown" v-if="setStatus">
 			<view class="reading-container flex align-center">
-				<MyIcon icon-id="icon-jiantou-copy px-2" @tap="recoil"></MyIcon>
+				<MyIcon icon-id="icon-jiantou-copy px-2" @myClick ="recoil"></MyIcon>
 				<text>{{ novalName }} </text>
 				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
 			</view>
@@ -24,8 +24,10 @@
 		</uniDrawer>
 		<!-- 目录结束 -->
 		<!-- 更多设置开始 -->
-		<view :class="curTheme" class="fixed-bottom more-setting px-3 animated slideInUp" v-if="moreStatus">
+		<view :class="curTheme" class="flex flex-column justify-center fixed-bottom more-setting px-3 animated slideInUp" v-if="moreStatus">
+			<!-- #ifndef H5 -->
 			<view class="flex">亮度：<slider min="0" :value="brightNess" @change="setBrightNess" max="100" class="flex-1" block-size="16" active-color="#34495E" background-color="#ECF1F0"></slider></view>
+			<!-- #endif -->
 			<view class="flex luminance font text-light-black">
 				<block v-for="item in themes" :key="item.id">
 					<view class="flex-1">
@@ -107,7 +109,7 @@
 						name:'夜间 '
 					}
 				],
-				themeIndex: uni.getStorageSync('themeIndex') == 3 ? 3 : uni.getStorageSync('themeIndex'),
+				themeIndex: (uni.getStorageSync('themeIndex') == 3 || !uni.getStorageSync('themeIndex')) ? 3 : uni.getStorageSync('themeIndex'),
 				brightNess:0, //亮度
 				typeFaceStatus:false,
 				moreStatus:false,
@@ -236,7 +238,10 @@
 			this.init(e.chapterId)
 		},
 		created(){
+			// #ifndef H5
 			this.getBrightNess()
+			// #endif
+			
 			this.$nextTick(()=>{
 				tool.calSurplusHeight({
 					pageID:this,
