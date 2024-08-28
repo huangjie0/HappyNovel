@@ -5,9 +5,12 @@
 		<!-- 设置开始 -->
 		<view :class="curTheme" class="fixed-top shadow animated slideInDown" v-if="setStatus">
 			<view class="reading-container flex align-center">
-				<MyIcon icon-id="icon-jiantou-copy px-2" @myClick ="recoil"></MyIcon>
+				<!-- #ifndef MP-WEIXIN -->
+				<MyIcon icon-id="icon-jiantou-copy pl-2" @myClick ="recoil"></MyIcon>
+				<!-- #endif -->
+				
 				<text>{{ novalName }} </text>
-				<text class="px-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
+				<text class="pl-2 font-sm text-ellipsis flex-1">章节：{{ curChapterTitle }}</text>
 			</view>
 		</view>
 		<!-- 设置结束 -->
