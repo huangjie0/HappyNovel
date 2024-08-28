@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<ListHeader>
-			<template #title>猜你喜欢</template>
-			<template #tips>更多推荐</template>
+			<template v-slot:title>猜你喜欢</template>
+			<template v-slot:tips>更多推荐</template>
 		</ListHeader>
 		<view class="flex align-center">
 			<block v-for="(item,index) in rebooks" :key="index" class="rebook-image">
