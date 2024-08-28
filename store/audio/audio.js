@@ -111,7 +111,6 @@ export default {
 		preOrNext({state,commit},type){
 			//先停止播放音乐
 			commit('audioStop');
-			
 			// #ifdef H5
 			state.currentTime = 0;
 			// #endif
@@ -142,12 +141,15 @@ export default {
 			let curIndex = musicResourecs.musicResourecs.findIndex(item => item.id === id);
 			if(state.currentPlayIndex == curIndex){
 				if(state.playStatus){
+					console.log("2122");
 					commit('audioPause')
 				}else{
+					console.log("sdfdf");
 					commit('audioPlay')
 				}
 				return
 			}else{
+				console.log('111');
 				commit('audioStop');
 			}
 			commit('changePlayIndex',curIndex);
