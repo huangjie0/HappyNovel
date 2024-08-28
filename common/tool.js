@@ -43,8 +43,9 @@ const calSurplusHeight = optionObj => {
 			let usedTotalHeight = NodesHeightArr.reduce((pre, item) => pre + item);
 			// 计算剩余高度(默认为非tabbar页面)
 			let SurHeight = isTabBarPage ? screenHeight - usedTotalHeight - 50 : screenHeight - usedTotalHeight;
+			SurHeight += 65
 			// 判断是否转换为rpx形式(默认转换)
-			    SurHeight = isRpx ? Torpx(SurHeight) : SurHeight;
+			SurHeight = isRpx ? Torpx(SurHeight) : SurHeight;
 			// 取整(防止震动)
 			let SurHeightEND = Math.floor(SurHeight)
 			success(SurHeightEND) 
