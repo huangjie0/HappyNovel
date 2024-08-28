@@ -77,7 +77,7 @@
 				</view>
 			</view>
 		</view>
-		
+		<!-- #ifdef H5 -->
 		<!-- 播放列表区域 -->
 		<view class="fixed-bottom shadow p-2 bottom-container-2 animated fadeInUp" v-show="listStatus">
 			<view class="font-weight-bold font-md search-list">
@@ -96,6 +96,27 @@
 				</block>
 			</scroll-view>
 		</view>
+		<!-- #endif -->
+		<!-- #ifdef MP-WEIXIN -->
+		<!-- 播放列表区域 -->
+		<view class="fixed-bottom shadow p-2 bottom-container-h5-2 animated fadeInUp" v-show="listStatus">
+			<view class="font-weight-bold font-md search-list">
+				列表选择
+			</view>
+			<scroll-view scroll-y class="scroll-h5-list">
+				<block v-for="(item,index) in audioList" :key="item.id">
+					<view class="flex align-center font scroll-list-item px-2" hover-class="bg-light" @tap="selectPlay(item.id)">
+						<text class="flex-1 text-ellipsis">{{ item.audioName }}</text>
+						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
+						<view class="flex-1 ml-3 flex align-center">
+							<text class="mr-2">播放</text>
+							<MyIcon iconId="icon-bofangsanjiaoxing" iconSize="40"></MyIcon>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+		<!-- #endif -->
 		<!-- 歌手简介详情 -->
 		<uni-popup ref="popup" type="center">
 			<view class="px-2 shadow popup" :class="nightStatus ? 'night-theme' : 'bg-white'">
@@ -193,7 +214,7 @@
 	padding-top: 100rpx;
 }
 .bottom-container{
-	height: 200rpx;
+	height: 220rpx;
 	border-radius: 30rpx;
 	z-index: 0;
 }
@@ -201,11 +222,21 @@
 	height: 220rpx;
 	border-radius: 30rpx;
 }
+.bottom-container-h5-2{
+	height: 400rpx;
+	border-radius: 30rpx;
+}
 .search-list{
 	height: 50rpx;
 }
 .scroll-list{
 	height: 200rpx;
+	&-item{
+		height: 80rpx;
+	}
+}
+.scroll-h5-list{
+	height: 400rpx;
 	&-item{
 		height: 80rpx;
 	}
