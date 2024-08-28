@@ -49,7 +49,6 @@
 		},
 		onLoad(){
 			this.initLoadMore()
-			
 		},
 		onReachBottom(){
 			this.loadMore()
