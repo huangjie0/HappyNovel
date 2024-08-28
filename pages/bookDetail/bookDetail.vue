@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<PageTitle class="cla">图片详情</PageTitle>
 		<view class="book-details flex align-center py-2 cal">
 			<image src="@/static/Rebook/Rebook1.jpg" mode="widthFix" lazy-load class="flex-1 mx-2 rounded"></image>
 			<view class="flex-2 mx-2">
@@ -39,7 +38,6 @@
 </template>
 
 <script>
-	import PageTitle from '@/components/PageTitle.vue'
 	import TabTop from '@/components/TabTop.vue'
 	import test from '@/common/test'
 	import tool from '@/common/tool.js'
@@ -55,7 +53,6 @@
 			}
 		},
 		components:{
-			PageTitle,
 			TabTop
 		},
 		mounted(){
