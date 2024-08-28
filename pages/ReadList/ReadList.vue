@@ -1,13 +1,11 @@
 <template>
 	<view>
-		<PageTitle>榜单</PageTitle>
 		<BookList :book-list="loadBookList"></BookList>
 		<LoadMore :status="loadMoreStatus"></LoadMore>
 	</view>
 </template>
 
 <script>		
-	import PageTitle from '@/components/PageTitle.vue'
 	import BookList from '@/components/BookList.vue'
 	import LoadMore from '@/components/uni-load-more/uni-load-more.vue'
 	let bookMoreList = {
@@ -133,7 +131,6 @@
 			this.loadMore()
 		},
 		components:{
-			PageTitle,
 			BookList,
 			LoadMore
 		}
