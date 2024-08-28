@@ -13,6 +13,8 @@
 			<BookList :book-list="item.books"></BookList>
 		</block>
 		<MyAudio></MyAudio>
+		<!-- 占位符号 -->
+		<view class="placeholder"></view>
 	</view>
 </template>
 
@@ -189,5 +191,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.placeholder{
+	height: 160rpx;
+}
 </style>
