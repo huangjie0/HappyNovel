@@ -5,7 +5,7 @@ export default {
 	state:{
 		playStatus:false,
 		currentPlayIndex:0,
-		durationTime:0, //音频总时长
+		durationTime:100, //音频总时长
 		currentTime:0, //当前播放时刻
 		audioList:[]
 	},
@@ -39,6 +39,9 @@ export default {
 				console.log("音频播放错误");
 			})
 			audio.onTimeUpdate(()=>{
+				// #ifdef H5
+				audio.startTime = state.currentTime
+				// #endif
 				state.currentTime = audio.currentTime 
 			})
 		},
@@ -90,6 +93,9 @@ export default {
 			// 实例化api
 			if(audio) return
 			audio = uni.createInnerAudioContext();
+			// #ifdef H5
+			audio.src = musicResourecs.musicResourecs[0].src;
+			// #endif
 			commit('addAudioEvent',dispatch);
 			//将数据放在List中
 			commit('getAudioList',musicResourecs.musicResourecs)
@@ -105,6 +111,11 @@ export default {
 		preOrNext({state,commit},type){
 			//先停止播放音乐
 			commit('audioStop');
+			
+			// #ifdef H5
+			state.currentTime = 0;
+			// #endif
+			
 			let curIndex = state.currentPlayIndex;
 			let lastIndex = musicResourecs.musicResourecs.length - 1;
 			switch (type){
@@ -115,6 +126,7 @@ export default {
 					curIndex == lastIndex ? commit('changePlayIndex',0) : commit('changePlayIndex',curIndex+1)
 					break;
 			}
+			
 			//然后开始播放音乐
 			commit('audioPlay')
 		},
