@@ -1,12 +1,14 @@
 import App from './App'
 import MyIcon from '@/components/MyIcon.vue'
 import store from 'store'
+import request from '@/common/request.js'
 
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
 Vue.config.productionTip = false
 Vue.prototype.$store = store
+Vue.prototype.$http = request
 App.mpType = 'app'
 const app = new Vue({
 	store,
