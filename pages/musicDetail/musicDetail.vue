@@ -1,6 +1,5 @@
 <template>
 	<view class="music-container" :class="nightStatus ? 'night-theme' : ''">
-		<PageTitle :theme="nightStatus ? 'night-theme' : 'bg-white' ">音乐详情</PageTitle> 
 		<view class="flex flex-column align-center justify-center">
 			<view>
 				<text class="font">歌曲：</text>
@@ -67,7 +66,7 @@
 						<text class="font-weight-bold">{{singerName}}</text>
 					</view>
 				</view>
-				<MyIcon iconId="icon-jieshao" iconSize="65" @tap="showSingerIntro"></MyIcon>
+				<MyIcon iconId="icon-jieshao" iconSize="65" @myClick="showSingerIntro"></MyIcon>
 			</view>
 			<view>
 				<view class="font-md pt-2">
@@ -107,7 +106,6 @@
 </template>
 
 <script>
-	import PageTitle from '@/components/PageTitle.vue'
 	import { mapState,mapMutations,mapActions } from "vuex"
 	import musicResourecs from '../../store/audio/musicResourecs.js';
 	import filter from '@/common/filter.js';
@@ -160,7 +158,6 @@
 			}
 		},
 		components:{
-			PageTitle,
 			uniPopup
 		}
 	}
