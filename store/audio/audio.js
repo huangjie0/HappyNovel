@@ -141,15 +141,13 @@ export default {
 			let curIndex = musicResourecs.musicResourecs.findIndex(item => item.id === id);
 			if(state.currentPlayIndex == curIndex){
 				if(state.playStatus){
-					console.log("2122");
 					commit('audioPause')
 				}else{
-					console.log("sdfdf");
 					commit('audioPlay')
 				}
 				return
 			}else{
-				console.log('111');
+				state.currentTime = 0;
 				commit('audioStop');
 			}
 			commit('changePlayIndex',curIndex);
