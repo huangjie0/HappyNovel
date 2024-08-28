@@ -55,7 +55,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="fixed-bottom shadow p-2 bottom-container animated fadeInUp" v-if="!listStatus">
+		<view class="fixed-bottom shadow p-2 bottom-container animated fadeInUp" v-show="!listStatus">
 			<view class="flex justify-between">
 				<view>
 					<view>
@@ -80,7 +80,7 @@
 		</view>
 		
 		<!-- 播放列表区域 -->
-		<view class="fixed-bottom shadow p-2 bottom-container-2 animated fadeInUp" v-else>
+		<view class="fixed-bottom shadow p-2 bottom-container-2 animated fadeInUp" v-show="listStatus">
 			<view class="font-weight-bold font-md search-list">
 				列表选择
 			</view>
@@ -116,7 +116,12 @@
 	export default {
 		//局部过滤器
 		filters:{
-			...filter
+			formatTime(num){
+				if(num == 100){
+					return filter.formatTime(0)
+				}
+				return filter.formatTime(num)
+			}
 		},
 		data(){
 			return{
@@ -196,16 +201,16 @@
 	z-index: 0;
 }
 .bottom-container-2{
-	height: 400rpx;
+	height: 220rpx;
 	border-radius: 30rpx;
 }
 .search-list{
 	height: 50rpx;
 }
 .scroll-list{
-	height: 350rpx;
+	height: 200rpx;
 	&-item{
-		height: 85rpx;
+		height: 80rpx;
 	}
 }
 .popup{
