@@ -38,6 +38,12 @@ export default {
 			audio.onError(()=>{
 				console.log("音频播放错误");
 			})
+			audio.onCanplay(()=>{
+				// #ifdef MP-WEIXIN
+				state.durationTime = audio.duration;
+				state.currentTime = audio.currentTime 
+				// #endif
+			})
 			audio.onTimeUpdate(()=>{
 				// #ifdef H5
 				audio.startTime = state.currentTime
