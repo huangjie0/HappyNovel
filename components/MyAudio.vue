@@ -1,5 +1,5 @@
 <template>
-	<view class="fixed-bottom audi-container mx-2 mb-1 rounded" @tap="toDetailPage">
+	<view class="fixed-bottom audi-container mx-2 mb-1 rounded" @tap="toDetailPage" :style="{ bottom : `${windowBottom}px`  }">
 		<!-- 进度部分 -->
 		<view class="flex align-center justify-center font audi-slider" @tap.stop>
 			<!-- 总时长 -->
@@ -19,11 +19,11 @@
 			</view>
 			<view class="flex align-center" @tap.stop>
 				<view class="animated" hover-class="pulse">
-					<MyIcon icon-id="icon-shangyishou" icon-size="75" @tap="preOrNext('pre')"></MyIcon>
+					<MyIcon icon-id="icon-shangyishou" icon-size="75" @myClick="preOrNext('pre')"></MyIcon>
 				</view>
-				<MyIcon :icon-id="playStatus ? 'icon-bofang' : 'icon-ziyuan'" icon-size="75" class="m-2" @tap="playOrpause"></MyIcon>
+				<MyIcon :icon-id="playStatus ? 'icon-bofang' : 'icon-ziyuan'" icon-size="75" class="m-2" @myClick="playOrpause"></MyIcon>
 				<view class="animated" hover-class="pulse">
-					<MyIcon icon-id="icon-xiayishou" icon-size="75" @tap="preOrNext('next')"></MyIcon>
+					<MyIcon icon-id="icon-xiayishou" icon-size="75" @myClick="preOrNext('next')"></MyIcon>
 				</view>
 			</view>
 		</view>
@@ -35,9 +35,19 @@
 	import filter from '@/common/filter.js';
 	import musicResourecs from '../store/audio/musicResourecs.js';
 	export default {
+		data(){
+			return {
+				windowBottom: uni.getSystemInfoSync().windowBottom
+			}
+		},
 		//局部过滤器
 		filters:{
-			...filter
+			formatTime(num){
+				if(num == 100){
+					return filter.formatTime(0)
+				}
+				return filter.formatTime(num)
+			}
 		},
 		computed:{
 			...mapState({
