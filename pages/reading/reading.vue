@@ -79,7 +79,6 @@
 </template>
 
 <script>
-	import test from '@/common/test.js'
 	import tool from '@/common/tool.js'
 	import htmlParser from '@/common/html-parser.js'
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
@@ -87,8 +86,14 @@
 	export default {
 		data() {
 			return {
-				novalName:test.name,  //小说姓名
-				chapterCatalog:test.chapterCatalog,  //小说目录
+				testContent:[],
+				novalName:'请稍后',  //小说姓名
+				chapterCatalog:[
+					{
+						id: 1,
+						title:''
+					}
+				],  //小说目录
 				calHeight:0,
 				themes:[
 					{
@@ -116,7 +121,12 @@
 				brightNess:0, //亮度
 				typeFaceStatus:false,
 				moreStatus:false,
-				loadedChapters:[], //已经加载的章节
+				loadedChapters:[
+					{
+						id:1,
+						title:'',
+					}
+				], //已经加载的章节
 				setStatus:false,
 				chapterIndex:0, //当前章节的标识
 				myFontSize:uni.getStorageSync('myFontSize') ? uni.getStorageSync('myFontSize') : 20,
@@ -130,6 +140,7 @@
 		computed:{
 			//当前章节标题
 			curChapterTitle(){
+				if(!this.chapterCatalog[this.chapterIndex].title) return '加载中'
 				return this.chapterCatalog[this.chapterIndex].title
 			},
 			//当前主题
@@ -139,7 +150,13 @@
 		},
 		methods: {
 			//初始化
-			init(id){
+			async init(id){
+				let { content } = await this.$http.get('/testContent')
+				this.testContent = content;
+				let res = await this.$http.get('/testSynopsis');
+				this.novalName = res.name;
+				this.chapterCatalog = res.chapterCatalog;
+				
 				let curIndex = this.chapterCatalog.findIndex(item => item.id == id)
 				this.changeIndex(curIndex)
 				this.preLoad()
@@ -196,7 +213,8 @@
 			},
 			//预加载方法
 			preLoad(){
-				test.chapterCatalog.forEach(item => this.loadedChapters.push({
+				this.loadedChapters.shift();
+				this.chapterCatalog.forEach(item => this.loadedChapters.push({
 					id:item.id,
 					title:item.title,
 					text:''
@@ -219,7 +237,7 @@
 			deplyLoad(){
 				let index = this.chapterIndex
 				if(this.loadedChapters[index].text == ''){
-					setTimeout(()=>this.loadedChapters[index].text = htmlParser(test.content[index].text),1000)
+					setTimeout(()=>this.loadedChapters[index].text = htmlParser(this.testContent[index].text),1000)
 				}
 			},
 			changeSetStatus(){

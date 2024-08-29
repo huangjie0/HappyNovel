@@ -39,17 +39,16 @@
 
 <script>
 	import TabTop from '@/components/TabTop.vue'
-	import test from '@/common/test'
 	import tool from '@/common/tool.js'
 	export default {
 		data(){
 			return {
 				calHeight:0,
 				tabIndex:0,
-				name:test.name,
-				author:test.author,
-				synopsis:test.synopsis,
-				chapterCatalog:test.chapterCatalog
+				name:'',
+				author:'',
+				synopsis:'',
+				chapterCatalog:[]
 			}
 		},
 		components:{
@@ -61,8 +60,16 @@
 				pos:'cal',
 				success:val => this.calHeight = val
 			})
+			this.init()
 		},
 		methods:{
+			async init(){
+				let { author,chapterCatalog,name,synopsis } = await this.$http.get('/testSynopsis');
+				this.author = author;
+				this.chapterCatalog = chapterCatalog;
+				this.name = name;
+				this.synopsis = synopsis;
+			},
 			getTabIndex(index){
 				this.tabIndex = index
 			},
