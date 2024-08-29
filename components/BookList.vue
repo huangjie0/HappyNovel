@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<block v-for="(mitem,mindex) in bookList" :key="mindex">
-			<view class="books-container border-bottom flex align-center p-1" hover-class="bg-light">
+			<view class="books-container border-bottom flex align-center p-1" hover-class="bg-light" @tap="toBookDetail(mitem.id)">
 				<image :src="mitem.imgurl" mode="aspectFill" class="books-image rounded mx-2"></image>
 				<view class="books-text flex-1">
 					<view class="py-2 font-md font-weight-bold">
@@ -23,6 +23,13 @@
 			bookList:{
 				type:Array,
 				default:()=>[]
+			}
+		},
+		methods:{
+			toBookDetail(id){
+				uni.navigateTo({
+					url:`/pages/bookDetail/bookDetail?bookID=${id}`
+				})
 			}
 		}
 	}

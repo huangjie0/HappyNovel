@@ -32,7 +32,7 @@
 			toBookDetail(index){
 				if(index === 0){
 					uni.navigateTo({
-						url:'/pages/bookDetail/bookDetail'
+						url:'/pages/bookDetail/bookDetail?bookID=2001'
 					})
 				}
 			}
