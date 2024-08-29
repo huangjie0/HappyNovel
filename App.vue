@@ -1,5 +1,10 @@
 <script>
 	export default {
+		//全局数据的缓存
+		globalData:{
+			//收藏的书籍
+			collectedBooks:[]
+		},
 		onLaunch: function() {
 			console.log('App Launch')
 		},
