@@ -24,18 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.book-details.data-v-d1a5e9f4 {
-  background-color: #a8b0c3;
-  height: 250rpx;
-}
-.book-details-name.data-v-d1a5e9f4 {
-  font-size: 45rpx;
-}
-.intro.data-v-d1a5e9f4 {
-  line-height: 80rpx;
-}
-.img-url.data-v-d1a5e9f4 {
-  width: 250rpx;
-  height: 210rpx;
+.placeholder.data-v-57280228 {
+  height: 160rpx;
 }
 

@@ -2,7 +2,6 @@
   "navigationBarTitleText": "榜单",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "page-title": "/components/PageTitle",
     "book-list": "/components/BookList",
     "load-more": "/components/uni-load-more/uni-load-more"
   }
