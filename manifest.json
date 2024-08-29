@@ -56,12 +56,15 @@
         "appid" : "wx5b9a06715c5fc468",
         "setting" : {
             "urlCheck" : false,
-            "es6" : true
+            "es6" : true,
+            "postcss" : false,
+            "minified" : false
         },
         "usingComponents" : true,
         "uniStatistics" : {
             "enable" : true
-        }
+        },
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true,
