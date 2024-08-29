@@ -1,4 +1,4 @@
-import musicResourecs from './musicResourecs.js';
+import http from '@/common/request.js';
 
 let audio;
 export default {
@@ -7,7 +7,8 @@ export default {
 		currentPlayIndex:0,
 		durationTime:100, //音频总时长
 		currentTime:0, //当前播放时刻
-		audioList:[]
+		audioList:[],
+		musicResourecs:[]
 	},
 	mutations:{
 		//监听
@@ -63,7 +64,7 @@ export default {
 		//开始播放
 		audioPlay(state){
 			let index = state.currentPlayIndex;
-			audio.src = musicResourecs.musicResourecs[index].src;
+			audio.src = state.musicResourecs.musicResourecs[index].src;
 			audio.play()
 		},
 		// 暂停方法
@@ -95,16 +96,18 @@ export default {
 		}
 	},
 	actions:{
-		init({commit,dispatch}){
+		async init({state,commit,dispatch}){
+			const res = await http.get('/musicResourecs');
+			state.musicResourecs = res;
 			// 实例化api
 			if(audio) return
 			audio = uni.createInnerAudioContext();
 			// #ifdef H5
-			audio.src = musicResourecs.musicResourecs[0].src;
+			audio.src = state.musicResourecs.musicResourecs[0].src;
 			// #endif
 			commit('addAudioEvent',dispatch);
 			//将数据放在List中
-			commit('getAudioList',musicResourecs.musicResourecs)
+			commit('getAudioList',state.musicResourecs.musicResourecs)
 		},
 		playOrpause({ state,commit }){
 			if(!state.playStatus){
@@ -122,7 +125,7 @@ export default {
 			// #endif
 			
 			let curIndex = state.currentPlayIndex;
-			let lastIndex = musicResourecs.musicResourecs.length - 1;
+			let lastIndex = state.musicResourecs.musicResourecs.length - 1;
 			switch (type){
 				case 'pre':
 					curIndex == 0 ? commit('changePlayIndex',lastIndex) : commit('changePlayIndex',curIndex-1)
@@ -144,7 +147,7 @@ export default {
 		},
 		//列表选择播放
 		selectPlay({state , commit},id){
-			let curIndex = musicResourecs.musicResourecs.findIndex(item => item.id === id);
+			let curIndex = state.musicResourecs.musicResourecs.findIndex(item => item.id === id);
 			if(state.currentPlayIndex == curIndex){
 				if(state.playStatus){
 					commit('audioPause')
