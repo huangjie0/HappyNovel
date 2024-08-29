@@ -89,8 +89,8 @@
 						<text class="flex-1 text-ellipsis">{{ item.audioName }}</text>
 						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
 						<view class="flex-1 ml-3 flex align-center">
-							<text class="mr-2">播放</text>
-							<MyIcon iconId="icon-bofangsanjiaoxing" iconSize="40"></MyIcon>
+							<text class="mr-2">{{ item.playStatus === 1 ? '播放中' : '播放' }}</text>
+							<MyIcon :iconId="item.playStatus  === 1 ? 'icon-bofangzhong2' : 'icon-bofangsanjiaoxing'" iconSize="40"></MyIcon>
 						</view>
 					</view>
 				</block>
@@ -109,8 +109,8 @@
 						<text class="flex-1 text-ellipsis">{{ item.audioName }}</text>
 						<text class="flex-1 text-ellipsis">{{ item.singerName }} </text>
 						<view class="flex-1 ml-3 flex align-center">
-							<text class="mr-2">播放</text>
-							<MyIcon iconId="icon-bofangsanjiaoxing" iconSize="40"></MyIcon>
+							<text class="mr-2">{{ item.playStatus === 1 ? '播放中' : '播放' }}</text>
+							<MyIcon :iconId="item.playStatus  === 1 ? 'icon-bofangzhong2' : 'icon-bofangsanjiaoxing'" iconSize="40"></MyIcon>
 						</view>
 					</view>
 				</block>
@@ -128,7 +128,6 @@
 
 <script>
 	import { mapState,mapMutations,mapActions } from "vuex"
-	import musicResourecs from '../../store/audio/musicResourecs.js';
 	import filter from '@/common/filter.js';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	
@@ -146,11 +145,21 @@
 			return{
 				listStatus:false,
 				collectStatus:false,
-				nightStatus:false
+				nightStatus:false,
+				musicResourecs:[{
+					cover:'',
+					id:1,
+					name:'',
+					singer:{
+						name:'',
+						synopsis:''
+					},
+					src:''
+				}]
 			}
 		},
 		methods: {
-			...mapActions(['playOrpause','preOrNext','sliderToPlay','selectPlay']),
+			...mapActions(['playOrpause','preOrNext','sliderToPlay','selectPlay','init']),
 			//改变状态
 			changeStatus(statusTtpe){
 				this[statusTtpe] = !this[statusTtpe]
@@ -158,6 +167,10 @@
 			//中间弹出框
 			showSingerIntro(){
 				this.$refs.popup.open()
+			},
+			async getData(){
+				const { musicResourecs } = await this.$http.get('/musicResourecs')
+				this.musicResourecs = musicResourecs;
 			}
 		},
 		computed:{
@@ -169,14 +182,20 @@
 				audioList:({ audio }) => audio.audioList
 			}),
 			audioName(){
-				return musicResourecs.musicResourecs[this.currentPlayIndex].name
+				return this.musicResourecs[this.currentPlayIndex].name
 			},
 			singerName(){
-				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.name
+				return this.musicResourecs[this.currentPlayIndex].singer.name
 			},
 			singerIntro(){
-				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.synopsis
+				return this.musicResourecs[this.currentPlayIndex].singer.synopsis
 			}
+		},
+		onLoad(){
+			this.init()
+		},
+		mounted(){
+			this.getData()
 		},
 		components:{
 			uniPopup
