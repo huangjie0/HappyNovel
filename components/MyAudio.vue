@@ -33,11 +33,20 @@
 <script>
 	import { mapState,mapGetters,mapMutations,mapActions } from 'vuex'; 
 	import filter from '@/common/filter.js';
-	import musicResourecs from '../store/audio/musicResourecs.js';
 	export default {
 		data(){
 			return {
-				windowBottom: uni.getSystemInfoSync().windowBottom
+				windowBottom: uni.getSystemInfoSync().windowBottom,
+				musicResourecs :[{
+					cover:'',
+					id:1,
+					name:'',
+					singer:{
+						name:'',
+						synopsis:''
+					},
+					src:''
+				}]
 			}
 		},
 		//局部过滤器
@@ -57,14 +66,15 @@
 				currentPlayIndex:({ audio }) => audio.currentPlayIndex
 			}),
 			audioName(){
-				return musicResourecs.musicResourecs[this.currentPlayIndex].name
+				return this.musicResourecs[this.currentPlayIndex].name
 			},
 			singerName(){
-				return musicResourecs.musicResourecs[this.currentPlayIndex].singer.name
+				return  this.musicResourecs[this.currentPlayIndex].singer.name
 			}
 		},
 		mounted(){
 			this.init();
+			this.getData();
 		},
 		destroyed(){
 			this.destroy()
@@ -76,6 +86,10 @@
 				uni.navigateTo({
 					url:'/pages/musicDetail/musicDetail'
 				})
+			},
+			async getData(){
+				let { musicResourecs } = await this.$http.get('/musicResourecs');
+				this.musicResourecs = musicResourecs;
 			}
 		}
 	}
