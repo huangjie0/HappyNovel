@@ -12,7 +12,7 @@
 		</view>
 		<!-- 歌曲图片 -->
 		<view class="music flex align-center justify-center">
-			<image src="../../static/music/music1.png" mode="widthFix" lazy-load class="music-image"></image>
+			<image :src="curCover" mode="widthFix" lazy-load class="music-image"></image>
 		</view>
 		<!-- 进度部分 -->
 		<view class="flex align-center justify-center font audi-slider">
@@ -183,6 +183,9 @@
 			}),
 			audioName(){
 				return this.musicResourecs[this.currentPlayIndex].name
+			},
+			curCover(){
+				return this.musicResourecs[this.currentPlayIndex].cover
 			},
 			singerName(){
 				return this.musicResourecs[this.currentPlayIndex].singer.name

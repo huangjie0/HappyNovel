@@ -1,17 +1,17 @@
 <template>
 	<view>
 		<view class="book-details flex align-center py-2 cal">
-			<image src="@/static/Rebook/Rebook1.jpg" mode="widthFix" lazy-load class="flex-1 mx-2 rounded"></image>
+			<image :src="bookItem.imgurl" mode="aspectFill" lazy-load class="flex-1 mx-2 rounded img-url"></image>
 			<view class="flex-2 mx-2">
 				<view class="book-details-name">
-					{{ name }}
+					{{ bookItem.name }}
 				</view>
 				<view class="font mt-1">
-					作者：{{ author }}
+					作者：{{ bookItem.author }}
 				</view>
 				<view class="flex align-center mt-2">
-					<button class="flex-1 mx-2">分享</button>
-					<button class="flex-1 mx-2">收藏</button>
+					<button class="flex-1 mx-1">分享</button>
+					<button class="flex-1 mx-1" @tap="changeCollectedStatus">{{ collectedStatus ? '已收藏' : '收藏' }}</button>
 				</view>
 			</view>
 		</view>
@@ -22,7 +22,7 @@
 			<scroll-view scroll-y v-if="tabIndex == 0" :style="{ height:`${calHeight}rpx` }">
 				<view>
 					<view class="py-2 flex justify-center text-light-black">——简介——</view>
-					<view class="px-2 font-lg intro">{{ synopsis }}</view>
+					<view class="px-2 font-lg intro">{{ bookItem.synopsis }}</view>
 				</view>
 			</scroll-view>
 			<!-- 目录 -->
@@ -45,10 +45,11 @@
 			return {
 				calHeight:0,
 				tabIndex:0,
-				name:'',
-				author:'',
-				synopsis:'',
-				chapterCatalog:[]
+				bookItem:{},
+				chapterCatalog:[],
+				currentBookId:'',
+				collectedBooks: getApp().globalData.collectedBooks,
+				collectedStatus: false,
 			}
 		},
 		components:{
@@ -60,15 +61,22 @@
 				pos:'cal',
 				success:val => this.calHeight = val
 			})
-			this.init()
+		},
+		 onLoad(e){
+			this.currentBookId = e.bookID;
+			this.getData(this.currentBookId)
 		},
 		methods:{
-			async init(){
-				let { author,chapterCatalog,name,synopsis } = await this.$http.get('/testSynopsis');
-				this.author = author;
-				this.chapterCatalog = chapterCatalog;
-				this.name = name;
-				this.synopsis = synopsis;
+			async getData(id){
+				const { list } = await this.$http.get('/book');
+				const res = await this.$http.get('/testSynopsis');
+				this.chapterCatalog = res.chapterCatalog
+				this.bookItem = list.find(item => item.id == Number(id));
+				
+				let curItem = this.collectedBooks.find(item => item.id == this.currentBookId)
+				//判断是否是收藏
+				if(curItem) this.collectedStatus = true;
+
 			},
 			getTabIndex(index){
 				this.tabIndex = index
@@ -77,6 +85,17 @@
 				uni.navigateTo({
 					url:`/pages/reading/reading?chapterId=${id}`
 				})
+			},
+			changeCollectedStatus(){
+				this.collectedStatus = !this.collectedStatus
+				uni.showToast({
+					icon:'none',
+					title:this.collectedStatus ? '已收藏' : '取消收藏'
+				})
+				
+				let index = this.collectedBooks.findIndex(item => item.id == this.currentBookId)
+				this.collectedStatus ? this.collectedBooks.push(this.bookItem) : this.collectedBooks.splice(index,1)
+				
 			}
 		}
 	}
@@ -93,5 +112,10 @@
 
 .intro{
 	line-height: 80rpx;
+}
+
+.img-url{
+	width: 250rpx;
+	height: 210rpx;
 }
 </style>

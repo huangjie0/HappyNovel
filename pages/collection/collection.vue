@@ -51,7 +51,7 @@
 				this.showCancelCol(false)
 			},
 			initData(){
-				this.collectArr = books
+				this.collectArr = getApp().globalData.collectedBooks
 			},
 			getTabIndex(index){
 				this.tabIndex = index
