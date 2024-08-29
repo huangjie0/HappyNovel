@@ -116,11 +116,7 @@ export default {
 			commit('getAudioList',state.musicResourecs.musicResourecs)
 		},
 		playOrpause({ state,commit }){
-			if(!state.playStatus){
-				commit('audioPlay')
-			}else{
-				commit('audioPause')
-			}
+			!state.playStatus ? commit('audioPlay') : commit('audioPause')
 		},
 		//切歌
 		preOrNext({state,commit},type){
