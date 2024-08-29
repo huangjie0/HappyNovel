@@ -64,15 +64,21 @@ export default {
 		//开始播放
 		audioPlay(state){
 			let index = state.currentPlayIndex;
+			state.audioList[index].playStatus = 1;
+			
 			audio.src = state.musicResourecs.musicResourecs[index].src;
 			audio.play()
 		},
 		// 暂停方法
-		audioPause(){
+		audioPause(state){
+			let index = state.currentPlayIndex;
+			state.audioList[index].playStatus = -1;
 			audio.pause()
 		},
 		//停止播放
-		audioStop(){
+		audioStop(state){
+			let index = state.currentPlayIndex;
+			state.audioList[index].playStatus = 0;
 			audio.stop()
 		},
 		//改变播放标识
