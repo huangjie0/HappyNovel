@@ -171,6 +171,7 @@
 			async getData(){
 				const { musicResourecs } = await this.$http.get('/musicResourecs')
 				this.musicResourecs = musicResourecs;
+				console.log(this.musicResourecs);
 			}
 		},
 		computed:{
@@ -182,16 +183,16 @@
 				audioList:({ audio }) => audio.audioList
 			}),
 			audioName(){
-				return this.musicResourecs[this.currentPlayIndex].name
+				return this.musicResourecs[this.currentPlayIndex]?.name
 			},
 			curCover(){
-				return this.musicResourecs[this.currentPlayIndex].cover
+				return this.musicResourecs[this.currentPlayIndex]?.cover
 			},
 			singerName(){
-				return this.musicResourecs[this.currentPlayIndex].singer.name
+				return this.musicResourecs[this.currentPlayIndex]?.singer?.name
 			},
 			singerIntro(){
-				return this.musicResourecs[this.currentPlayIndex].singer.synopsis
+				return this.musicResourecs[this.currentPlayIndex]?.singer?.synopsis
 			}
 		},
 		onLoad(){
